@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Digital Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <h1><i class="fas fa-store"></i> Digital Store</h1>
+            </div>
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Coleções</a></li>
+                    <li><a href="produtos.html" class="active">Produtos</a></li>
+                    <li><a href="#">Sobre</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="search"><i class="fas fa-search"></i></a>
+                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+            </div>
+            <button class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menu mobile -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <h2>Menu <span class="close-menu" id="close-menu">✕</span></h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Coleções</a></li>
+                <li><a href="produtos.html" class="active">Produtos</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-cart">
+            <a href="#" class="btn btn-primary">Carrinho (0)</a>
+        </div>
+    </div>
+
+    <!-- Navegação de Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li class="current">Tênis</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Área principal de produtos -->
+    <section class="product-listing">
+        <div class="container">
+            <div class="product-grid-layout">
+                <!-- Barra lateral de filtros -->
+                <aside class="filter-sidebar">
+                    <div class="filter-header">
+                        <h3>Filtrar por</h3>
+                        <span class="filter-toggle" id="filter-toggle">Filtros</span>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h4>Gênero</h4>
+                        <ul class="filter-options">
+                            <li>
+                                <input type="checkbox" id="masculino" name="gender" checked>
+                                <label for="masculino">Masculino</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="feminino" name="gender">
+                                <label for="feminino">Feminino</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="unissex" name="gender">
+                                <label for="unissex">Unissex</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Categoria</h4>
+                        <ul class="filter-options">
+                            <li>
+                                <input type="checkbox" id="tenis" name="category" checked>
+                                <label for="tenis">Tênis</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="camisetas" name="category">
+                                <label for="camisetas">Camisetas</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="calcas" name="category">
+                                <label for="calcas">Calças</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="acessorios" name="category">
+                                <label for="acessorios">Acessórios</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Preço</h4>
+                        <div class="price-range">
+                            <input type="range" id="price-range" min="0" max="500" value="100">
+                            <div class="price-values">
+                                <span>$0</span>
+                                <span>$500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Cor</h4>
+                        <div class="color-options">
+                            <span class="color-option" style="background-color: #000;"></span>
+                            <span class="color-option" style="background-color: #fff; border: 1px solid #ddd;"></span>
+                            <span class="color-option" style="background-color: #f00;"></span>
+                            <span class="color-option" style="background-color: #00f;"></span>
+                            <span class="color-option" style="background-color: #ff0;"></span>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Tamanho</h4>
+                        <div class="size-options">
+                            <span class="size-option">38</span>
+                            <span class="size-option">39</span>
+                            <span class="size-option">40</span>
+                            <span class="size-option">41</span>
+                            <span class="size-option">42</span>
+                            <span class="size-option">43</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-filter">Aplicar Filtros</button>
+                </aside>
+
+                <!-- Lista de Produtos -->
+                <div class="products-content">
+                    <div class="products-header">
+                        <h2>Resultados para "Tênis" - <span>15 produtos</span></h2>
+                        <div class="products-sort">
+                            <label for="sort">Ordenar por:</label>
+                            <select id="sort" name="sort">
+                                <option value="relevance">Relevância</option>
+                                <option value="price-low">Menor Preço</option>
+                                <option value="price-high">Maior Preço</option>
+                                <option value="newest">Mais Recentes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="products-grid">
+                        <!-- Produto 1 -->
+                        <div class="product-card">
+                            <a href="produto-detalhe.html">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+
+                        <!-- Produto 2 -->
+                        <div class="product-card">
+                            <a href="produto-detalhe.html">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+
+                        <!-- Produto 3 -->
+                        <div class="product-card">
+                            <a href="produto-detalhe.html">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+
+                        <!-- Produto 4 -->
+                        <div class="product-card">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Produto 5 -->
+                        <div class="product-card">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Produto 6 -->
+                        <div class="product-card">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Produto 7 -->
+                        <div class="product-card">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Produto 8 -->
+                        <div class="product-card">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Produto 9 -->
+                        <div class="product-card">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Produto 10 -->
+                        <div class="product-card">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Produto 11 -->
+                        <div class="product-card">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Produto 12 -->
+                        <div class="product-card">
+                            <span class="discount">-50% OFF</span>
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/200x200" alt="K-Series VR - Masculino">
+                            </div>
+                            <div class="product-info">
+                                <h4>K-Series VR - Masculino</h4>
+                                <div class="price">
+                                    <span class="original">$200</span>
+                                    <span class="current">$100</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paginação -->
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <span>...</span>
+                        <a href="#">10</a>
+                        <a href="#" class="next">Próxima <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3><i class="fas fa-store"></i> Digital Store</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Informações</h4>
+                        <ul>
+                            <li><a href="#">Sobre nós</a></li>
+                            <li><a href="#">Contato</a></li>
+                            <li><a href="#">Termos & Condições</a></li>
+                            <li><a href="#">Trocas e Devoluções</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Categorias</h4>
+                        <ul>
+                            <li><a href="#">Calçados</a></li>
+                            <li><a href="#">Roupas</a></li>
+                            <li><a href="#">Acessórios</a></li>
+                            <li><a href="#">Eletrônicos</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Contato</h4>
+                        <ul>
+                            <li>Av. Lorem Ipsum, n° 1</li>
+                            <li>Centro - Fortaleza</li>
+                            <li>Tel: (85) 99999-9999</li>
+                            <li>Email: contato@digitalstore.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Digital Store. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
