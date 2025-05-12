@@ -10,14 +10,12 @@
 </head>
 
 <body>
-  <!-- HEADER -->
   <header class="container-fluid py-3 border-bottom bg-white">
-    <div class="d-flex justify-content-between align-items-center px-4">
-      <div class="d-flex align-items-center gap-2">
-        <img src="img/logo -HEADER.svg" alt="Logo" class="" />
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center px-3 gap-3">
+      <div class="d-flex align-items-center">
+        <img src="img/logo -HEADER.svg" alt="Logo" style="max-width: 120px;" />
       </div>
-      <!-- <input type="text" class="form-control w-50" placeholder="Pesquisar produtos..."> -->
-      <div class="position-relative w-100 mx-4" style="max-width: 600px;">
+      <div class="position-relative w-100" style="max-width: 600px;">
         <input type="text" id="searchInput" class="form-control" placeholder="Pesquisar produto..."
           oninput="showSuggestions()">
         <svg class="position-absolute"
@@ -28,7 +26,7 @@
         </svg>
         <ul id="suggestions" class="list-group position-absolute w-100 mt-1 d-none z-3"></ul>
       </div>
-      <div class="d-flex gap-3">
+      <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
         <a href="#" class="text-muted">Cadastre-se</a>
         <button class="btn btn-danger">Entrar</button>
         <div class="position-relative">
@@ -40,7 +38,9 @@
         </div>
       </div>
     </div>
-    <nav class="navbar navbar-expand-md navbar-light bg-white px-4 border-bottom mt-2">
+
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-md navbar-light bg-white px-3 border-top mt-3">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
         aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,8 @@
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link text-danger fw-semibold border-bottom border-2 border-danger py-2" href="#">Home</a>
+            <a class="nav-link text-danger fw-semibold border-bottom border-2 border-danger py-2"
+              href="home.html">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-muted py-2" href="produtos.html">Produtos</a>
@@ -63,7 +64,6 @@
         </ul>
       </div>
     </nav>
-
   </header>
 
   <main>
@@ -81,7 +81,9 @@
               <a href="#" class="btn btn-danger">Ver ofertas</a>
             </div>
             <div class="col-md-6 text-center">
-              <img src="img/White-Sneakers-BANENRlipart 1.svg" class="img-fluid" alt="Nike Promo">
+              <img
+                style="background-image: url(img/Ornament\ 11.svg); background-repeat: no-repeat;  background-position: top "
+                src="img/White-Sneakers-BANENRlipart 1.svg" class="img-fluid" alt="Nike Promo">
             </div>
           </div>
         </div>
@@ -97,7 +99,9 @@
               <a href="#" class="btn btn-danger">Ver coleção</a>
             </div>
             <div class="col-md-6 text-center">
-              <img src="img/White-Sneakers-BANENRlipart 1.svg" class="img-fluid" alt="Adidas Promo">
+              <img
+                style="background-image: url(img/Ornament\ 11.svg); background-repeat: no-repeat;  background-position: top "
+                src="img/White-Sneakers-BANENRlipart 1.svg" class="img-fluid" alt="Adidas Promo">
             </div>
           </div>
         </div>
@@ -112,11 +116,14 @@
               <a href="#" class="btn btn-danger">Comprar agora</a>
             </div>
             <div class="col-md-6 text-center">
-              <img src="img/White-Sneakers-BANENRlipart 1.svg" class="img-fluid" alt="Frete Grátis">
+              <img
+                style="background-image: url(img/Ornament\ 11.svg); background-repeat: no-repeat;  background-position: top "
+                src="img/White-Sneakers-BANENRlipart 1.svg" class="img-fluid" alt="Frete Grátis">
             </div>
           </div>
         </div>
       </div>
+
 
       <!-- Controles -->
       <button class="carousel-control-prev" type="button" data-bs-target="#promoCarousel" data-bs-slide="prev">
@@ -134,34 +141,59 @@
       </div>
     </div>
 
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h4 class="fw-bold mb-4">Coleções em destaque</h4>
+        <div class="row g-3">
 
-    <!-- CARROSSEL DE COLEÇÕES -->
-    <section class="container mb-5 ">
-      <h4 class="fw-bold mb-3">Coleções em destaque</h4>
-      <div class="d-flex overflow-auto gap-4 pb-2 justify-content-center">
-        <div class="card collection-item p-3 border-0 rounded-1" style="width: 250px; background-color: #D8E3F2;">
-          <span class="badge badge-sale mb-2 w-50">30% OFF</span>
-          <h6 class="fw-bold">Novo drop Supreme</h6>
-          <button class="btn btn-light btn-sm text-danger fw-semibold w-50">Comprar</button>
-          <img
-            src="img/star-wars-storm-trooper-supreme-shirts-supreme-t-shirt-snoopy-clothing-apparel-t-shirt-text-transparent-png-616696 1.svg"
-            class="mt-2 w-100 " alt="Supreme">
-        </div>
-        <div class="card flex-shrink-0 p-3 border-0 rounded-1" style="width: 250px; background-color: #D8E3F2;">
-          <span class="badge badge-sale mb-2 w-50">30% OFF</span>
-          <h6 class="fw-bold">Coleção Adidas</h6>
-          <button class="btn btn-light btn-sm text-danger fw-semibold w-50">Comprar</button>
-          <img src="img/fooone.svg" class="mt-2 w-100" alt="Adidas">
-        </div>
-        <div class="card flex-shrink-0 p-3 border-0 rounded-1" style="width: 250px; background-color: #D8E3F2;">
-          <span class="badge badge-sale mb-2 w-50">30% OFF</span>
-          <h6 class="fw-bold">Novo Beats Bass</h6>
-          <button class="btn btn-light btn-sm text-danger fw-semibold w-50">Comprar</button>
-          <img src="img/fooone.svg" class="mt-2 w-100" alt="Beats">
+          <!-- Card 1 -->
+          <div class="col-md-4 col-12 ">
+            <div
+              style="background-color: #D8E3F2; background-image: url(img/star-wars-storm-trooper-supreme-shirts-supreme-t-shirt-snoopy-clothing-apparel-t-shirt-text-transparent-png-616696\ 1.svg ); background-repeat: no-repeat;  background-position: right; "
+              class="card h-100 shadow-sm">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <span style="background-color: rgba(231, 255, 134, 1);" class="badge  text-dark mb-2">30% OFF</span>
+                  <h5 class="fw-bold">Coleção <br> Novo drop Supreme</h5>
+                </div>
+                <button class="btn btn-light text-danger mt-3 w-25 fw-semibold">Comprar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-md-4 col-12">
+            <div
+              style="background-color: #D8E3F2; background-image: url(img/ddd\ 1.svg); background-repeat: no-repeat;  background-position: right; "
+              class="card h-100 shadow-sm">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <span style="background-color: rgba(231, 255, 134, 1);" class="badge text-dark mb-2">30% OFF</span>
+                  <h5 class="fw-bold">Coleção <br> Adidas</h5>
+                </div>
+                <button class="btn btn-light text-danger mt-3 w-25 fw-semibold">Comprar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-md-4 col-12">
+            <div
+              style="background-color: #D8E3F2; background-image: url(img/fooone.svg); background-repeat: no-repeat;  background-position: right; "
+              class="card h-100 shadow-sm">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <span style="background-color: rgba(231, 255, 134, 1);" class="badge text-dark mb-2">30% OFF</span>
+                  <h5 class="fw-bold">Novo <br> Beats Bass</h5>
+                </div>
+                <button class="btn btn-light text-danger mt-3 w-25 fw-semibold">Comprar</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
-
     <!-- Colecao de destaque -->
     <section class="py-5 bg-light text-center">
       <h3 class="fw-bold mb-4">Coleções em destaque</h3>
@@ -207,93 +239,94 @@
     </section>
 
     <!-- PRODUTOS EM ALTA -->
-    <section ;" class="container mb-5">
+    <section class="container mb-5">
       <h4 class="fw-bold mb-3">Produtos em alta</h4>
+      <a style="justify-items: end;" href="produtos.html">Ver todos</a>
       <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
         <!-- Card de produto -->
-        <div class="col">
+        <div class="col card-pro">
           <div class="card product-card p-3 border-0 rounded-2 text-center bg-white">
             <span class="badge badge-sale align-self-start">30% OFF</span>
             <img src="img/Layer 1aa 2.svg" class="w-100 my-2" alt="K-Swiss">
           </div>
-          <div>
+          <div class="mt-2">
             <h6 style="color: #828080;">Tênis</h6>
             <a href="produtos.html">K-Swiss V8 - Masculino</a>
             <p class="text-muted mb-1"><s>$200</s> <strong>$100</strong></p>
           </div>
         </div>
-        <div class="col">
+        <div class="col card-pro">
           <div class="card product-card p-3 border-0 rounded-2 text-center bg-white">
             <span class="badge badge-sale align-self-start">30% OFF</span>
             <img src="img/Layer 1aa 2.svg" class="w-100 my-2" alt="K-Swiss">
           </div>
-          <div>
+          <div class="mt-2">
             <h6 style="color: #828080;">Tênis</h6>
             <a href="produtos.html">K-Swiss V8 - Masculino</a>
             <p class="text-muted mb-1"><s>$200</s> <strong>$100</strong></p>
           </div>
         </div>
-        <div class="col">
+        <div class="col card-pro">
           <div class="card product-card p-3 border-0 rounded-2 text-center bg-white">
-            <span class="badge badge-sale align-self-start">30% OFF</span>
+            <span class="badge badge-sale align-self-start"></span>
             <img src="img/Layer 1aa 2.svg" class="w-100 my-2" alt="K-Swiss">
           </div>
-          <div>
+          <div class="mt-2">
             <h6 style="color: #828080;">Tênis</h6>
             <a href="produtos.html">K-Swiss V8 - Masculino</a>
             <p class="text-muted mb-1"><s>$200</s> <strong>$100</strong></p>
           </div>
         </div>
-        <div class="col">
+        <div class="col card-pro">
           <div class="card product-card p-3 border-0 rounded-2 text-center bg-white">
-            <span class="badge badge-sale align-self-start">30% OFF</span>
+            <span class="badge badge-sale align-self-start"></span>
             <img src="img/Layer 1aa 2.svg" class="w-100 my-2" alt="K-Swiss">
           </div>
-          <div>
+          <div class="mt-2">
             <h6 style="color: #828080;">Tênis</h6>
             <a href="produtos.html">K-Swiss V8 - Masculino</a>
             <p class="text-muted mb-1"><s>$200</s> <strong>$100</strong></p>
           </div>
         </div>
-        <div class="col">
+        <div class="col card-pro">
           <div class="card product-card p-3 border-0 rounded-2 text-center bg-white">
-            <span class="badge badge-sale align-self-start">30% OFF</span>
+            <span class="badge badge-sale align-self-start"></span>
             <img src="img/Layer 1aa 2.svg" class="w-100 my-2" alt="K-Swiss">
           </div>
-          <div>
+          <div class="mt-2">
             <h6 style="color: #828080;">Tênis</h6>
             <a href="produtos.html">K-Swiss V8 - Masculino</a>
             <p class="text-muted mb-1"><s>$200</s> <strong>$100</strong></p>
           </div>
         </div>
-        <div class="col">
+        <div class="col card-pro">
           <div class="card product-card p-3 border-0 rounded-2 text-center bg-white">
-            <span class="badge badge-sale align-self-start">30% OFF</span>
+            <span class="badge badge-sale align-self-start"></span>
             <img src="img/Layer 1aa 2.svg" class="w-100 my-2" alt="K-Swiss">
           </div>
-          <div>
+          <div class="mt-2">
             <h6 style="color: #828080;">Tênis</h6>
             <a href="produtos.html">K-Swiss V8 - Masculino</a>
             <p class="text-muted mb-1"><s>$200</s> <strong>$100</strong></p>
           </div>
         </div>
-        <div class="col">
+        <div class="col card-pro">
           <div class="card product-card p-3 border-0 rounded-2 text-center bg-white">
-            <span class="badge badge-sale align-self-start">30% OFF</span>
+            <span class="badge badge-sale align-self-start"></span>
             <img src="img/Layer 1aa 2.svg" class="w-100 my-2" alt="K-Swiss">
           </div>
-          <div>
+          <div class="mt-2">
             <h6 style="color: #828080;">Tênis</h6>
             <a href="produtos.html">K-Swiss V8 - Masculino</a>
             <p class="text-muted mb-1"><s>$200</s> <strong>$100</strong></p>
           </div>
         </div>
-        <div class="col">
+        <div class="col card-pro">
           <div class="card product-card p-3 border-0 rounded-2 text-center bg-white">
-            <span class="badge badge-sale align-self-start">30% OFF</span>
+            <span class="badge badge-sale align-self-start"></span>
             <img src="img/Layer 1aa 2.svg" class="w-100 my-2" alt="K-Swiss">
           </div>
-          <div>
+          <div class="mt-2">
             <h6 style="color: #828080;">Tênis</h6>
             <a href="produtos.html">K-Swiss V8 - Masculino</a>
             <p class="text-muted mb-1"><s>$200</s> <strong>$100</strong></p>
@@ -303,23 +336,22 @@
 
     </section>
     <!-- SEÇÃO DE DESTAQUE -->
-    <section style="background-color: white; height: 400px;" class="container-fluid  mt-5 ">
+    <section class="container-fluid mt-5 py-5" style="background-color: white;">
       <div class="row align-items-center">
-        <div
-          style="background-image: url(img/Ellipse\ 11.svg ); background-repeat: no-repeat;  background-position: center;"
-          class="col-md-6 mt-3">
-          <img src="img/Laye 1.svg" class="img-fluid mt-5" alt="Air Jordan">
+        <div class="col-md-6 col-12 mb-4 mb-md-0 d-flex justify-content-center"
+          style="background-image: url('img/Ellipse 11.svg'); background-repeat: no-repeat; background-position: center;">
+          <img src="img/Laye 1.svg" class="img-fluid mt-4" alt="Air Jordan" style="max-height: 300px;">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-12 text-center text-md-start">
           <small class="text-danger fw-semibold">Oferta exclusiva</small>
-          <h4 class="fw-bold">Air Jordan edição de colecionador</h4>
+          <h4 class="fw-bold mt-2">Air Jordan edição de colecionador</h4>
           <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime dolorem unde
             voluptatibus!</p>
           <a href="#" class="btn btn-danger">Comprar agora</a>
         </div>
+
       </div>
     </section>
-
   </main>
 
   <footer class="pt-5 pb-3">
