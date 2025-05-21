@@ -10,70 +10,124 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   // Estado para armazenar os itens do carrinho
   const [cartItems, setCartItems] = useState([]);
-  
-  // Carregar itens do localStorage quando o componente é montado
+    // Carregar itens do localStorage quando o componente é montado
   useEffect(() => {
-    const storedCart = localStorage.getItem('cart');
-    if (storedCart) {
+    // Usar uma referência para verificar se o componente ainda está montado
+    let isMounted = true;
+    
+    // Função para carregar do localStorage de forma segura
+    const loadFromLocalStorage = async () => {
       try {
-        setCartItems(JSON.parse(storedCart));
+        const storedCart = localStorage.getItem('cart');
+        
+        if (storedCart && isMounted) {
+          setCartItems(JSON.parse(storedCart));
+        }
       } catch (error) {
         console.error('Erro ao carregar o carrinho:', error);
-        setCartItems([]);
+        if (isMounted) {
+          setCartItems([]);
+        }
       }
-    }
+    };
+    
+    loadFromLocalStorage();
+    
+    // Limpar na desmontagem do componente
+    return () => {
+      isMounted = false;
+    };
   }, []);
-  
-  // Salvar itens no localStorage sempre que o carrinho for atualizado
+    // Salvar itens no localStorage sempre que o carrinho for atualizado
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cartItems));
-  }, [cartItems]);
-  
-  // Adicionar um item ao carrinho
-  const addToCart = (product, quantity = 1) => {
+    // Usar uma referência para verificar se o componente ainda está montado
+    let isMounted = true;
+    
+    // Função para salvar no localStorage de forma segura
+    const saveToLocalStorage = async () => {
+      try {
+        if (isMounted) {
+          localStorage.setItem('cart', JSON.stringify(cartItems));
+        }
+      } catch (error) {
+        console.error('Erro ao salvar o carrinho:', error);
+      }
+    };
+    
+    saveToLocalStorage();
+    
+    // Limpar na desmontagem do componente
+    return () => {
+      isMounted = false;
+    };
+  }, [cartItems]);  // Adicionar um item ao carrinho
+  const addToCart = async (product, quantity = 1) => {
     if (!product) return; // Verificar se o produto é válido
     
-    setCartItems(prevItems => {
-      // Verificar se o produto já está no carrinho
-      const existingItemIndex = prevItems.findIndex(item => item.id === product.id);
+    try {
+      setCartItems(prevItems => {
+        // Verificar se o produto já está no carrinho
+        const existingItemIndex = prevItems.findIndex(item => item.id === product.id);
+        
+        if (existingItemIndex >= 0) {
+          // Se o produto já estiver no carrinho, incrementar a quantidade
+          const newItems = [...prevItems];
+          newItems[existingItemIndex] = {
+            ...newItems[existingItemIndex],
+            quantity
+          };
+          return newItems;
+        } else {
+          // Se o produto não estiver no carrinho, adicioná-lo
+          return [...prevItems, { ...product, quantity }];
+        }
+      });
       
-      if (existingItemIndex >= 0) {
-        // Se o produto já estiver no carrinho, incrementar a quantidade
-        const newItems = [...prevItems];
-        newItems[existingItemIndex] = {
-          ...newItems[existingItemIndex],
-          quantity
-        };
-        return newItems;
-      } else {
-        // Se o produto não estiver no carrinho, adicioná-lo
-        return [...prevItems, { ...product, quantity }];
-      }
-    });
+      return true; // Indicar sucesso
+    } catch (error) {
+      console.error('Erro ao adicionar ao carrinho:', error);
+      return false; // Indicar falha
+    }
   };
-  
-  // Remover um item do carrinho
-  const removeFromCart = (productId) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
+    // Remover um item do carrinho
+  const removeFromCart = async (productId) => {
+    try {
+      setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
+      return true;
+    } catch (error) {
+      console.error('Erro ao remover do carrinho:', error);
+      return false;
+    }
   };
   
   // Atualizar a quantidade de um item no carrinho
-  const updateQuantity = (productId, quantity) => {
-    if (quantity <= 0) {
-      removeFromCart(productId);
-      return;
+  const updateQuantity = async (productId, quantity) => {
+    try {
+      if (quantity <= 0) {
+        return await removeFromCart(productId);
+      }
+      
+      setCartItems(prevItems => 
+        prevItems.map(item => 
+          item.id === productId ? { ...item, quantity } : item
+        )
+      );
+      return true;
+    } catch (error) {
+      console.error('Erro ao atualizar quantidade:', error);
+      return false;
     }
-    
-    setCartItems(prevItems => 
-      prevItems.map(item => 
-        item.id === productId ? { ...item, quantity } : item
-      )
-    );
   };
   
   // Limpar o carrinho
-  const clearCart = () => {
-    setCartItems([]);
+  const clearCart = async () => {
+    try {
+      setCartItems([]);
+      return true;
+    } catch (error) {
+      console.error('Erro ao limpar o carrinho:', error);
+      return false;
+    }
   };
   
   // Calcular o total de itens no carrinho

@@ -41,17 +41,24 @@ const ProductDetailPage = () => {
     if (quantity > 1) {
       setQuantity(prev => prev - 1);
     }
-  };
-  const handleAddToCart = () => {
+  };  const handleAddToCart = async () => {
     if (product) {
-      // Chamar a função addToCart com o produto e a quantidade selecionada
-      addToCart(product, quantity);
-      // Mostrar mensagem de sucesso
-      setShowSuccessMessage(true);
-      // Esconder a mensagem após 3 segundos
-      setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 3000);
+      try {
+        // Chamar a função addToCart com o produto e a quantidade selecionada
+        const success = await addToCart(product, quantity);
+        
+        if (success) {
+          // Mostrar mensagem de sucesso
+          setShowSuccessMessage(true);
+          // Esconder a mensagem após 3 segundos
+          setTimeout(() => {
+            setShowSuccessMessage(false);
+          }, 3000);
+        }
+      } catch (error) {
+        console.error("Erro ao adicionar produto ao carrinho:", error);
+        // Opcionalmente, mostrar uma mensagem de erro ao usuário
+      }
     }
   };
 

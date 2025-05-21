@@ -15,11 +15,14 @@ const CartPage = () => {
   
   // Calcular total
   const total = subtotal + shipping;
-
   // Função para atualizar a quantidade
-  const handleQuantityChange = (id, newQuantity) => {
+  const handleQuantityChange = async (id, newQuantity) => {
     if (newQuantity >= 1) {
-      updateQuantity(id, newQuantity);
+      try {
+        await updateQuantity(id, newQuantity);
+      } catch (error) {
+        console.error('Erro ao atualizar quantidade:', error);
+      }
     }
   };
 
@@ -99,11 +102,16 @@ const CartPage = () => {
                           </div>
                         </td>
                         <td className="text-center fw-bold">{formatCurrency(item.currentPrice * item.quantity)}</td>
-                        <td className="text-center">
-                          <Button 
+                        <td className="text-center">                          <Button 
                             variant="outline-danger" 
                             size="sm"
-                            onClick={() => removeFromCart(item.id)}
+                            onClick={async () => {
+                              try {
+                                await removeFromCart(item.id);
+                              } catch (error) {
+                                console.error('Erro ao remover item:', error);
+                              }
+                            }}
                           >
                             <i className="bi bi-trash"></i>
                           </Button>
@@ -121,10 +129,15 @@ const CartPage = () => {
                 >
                   <i className="bi bi-arrow-left me-2"></i>
                   Continuar Comprando
-                </Button>
-                <Button 
+                </Button>                <Button 
                   variant="outline-danger"
-                  onClick={clearCart}
+                  onClick={async () => {
+                    try {
+                      await clearCart();
+                    } catch (error) {
+                      console.error('Erro ao limpar carrinho:', error);
+                    }
+                  }}
                 >
                   <i className="bi bi-trash me-2"></i>
                   Limpar Carrinho
