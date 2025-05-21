@@ -60,9 +60,9 @@ const ProductCard = ({ product, isSelected = false, onCompareToggle }) => {
               <span className="card_produto__desconto">{discount}% OFF</span>
             </div>
           )}
-          <div className="card_produto__area_imagem">
-            <Link to={`/produtos/${id}`}>
+          <div className="card_produto__area_imagem">          <Link to={`/produtos/${id}`}>
               <img src={image} alt={name} className="card_produto__imagem" />
+              <div className="card_produto__imagem_overlay"></div>
             </Link>
           </div>
           <div className="card_produto__corpo">
