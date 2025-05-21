@@ -55,18 +55,21 @@ const ProductListItem = ({ product, isSelected = false, onCompareToggle }) => {
         <div className="row align-items-center">
           {/* Imagem do produto */}
           <div className="col-md-3 col-4 mb-2 mb-md-0">
-            <div className="list-item-product__image-container position-relative">
-              {discount && (
-                <div className="list-item-product__discount position-absolute top-0 start-0 bg-danger text-white px-2 py-1 rounded">
+            <div className="list-item-product__image-container position-relative">              {discount && (
+                <div className="list-item-product__discount position-absolute">
                   <span>{discount}% OFF</span>
                 </div>
-              )}
-              <Link to={`/produtos/${id}`}>
+              )}              <Link to={`/produtos/${id}`}>
                 <img 
                   src={image} 
                   alt={name} 
                   className="list-item-product__image img-fluid rounded"
                 />
+                <div className="list-item-product__overlay">
+                  <span className="list-item-product__view-details">
+                    <i className="bi bi-eye me-1"></i> Ver detalhes
+                  </span>
+                </div>
               </Link>
             </div>
           </div>
@@ -96,25 +99,30 @@ const ProductListItem = ({ product, isSelected = false, onCompareToggle }) => {
           <div className="col-md-3 mt-3 mt-md-0">
             <div className="list-item-product__price-area text-end text-md-center mb-3">
               {oldPrice && (
-                <del className="list-item-product__old-price d-block text-muted">
-                  R${oldPrice.toFixed(2).replace('.', ',')}
-                </del>
-              )}
-              <span className="list-item-product__current-price fw-bold fs-5 text-primary">
+                <>
+                  <del className="list-item-product__old-price d-block">
+                    R${oldPrice.toFixed(2).replace('.', ',')}
+                  </del>
+                  {discount && <span className="list-item-product__savings">Economize R${(oldPrice - currentPrice).toFixed(2).replace('.', ',')}</span>}
+                </>
+              )}<span className="list-item-product__current-price fw-bold fs-5 text-primary">
                 R${currentPrice.toFixed(2).replace('.', ',')}
               </span>
+              <div className="list-item-product__stock mb-2 mt-2">
+                <span className="list-item-product__stock-qty">
+                  {Math.floor(Math.random() * 20) + 5} unidades disponíveis
+                </span>
+              </div>
             </div>
-            <div className="d-flex gap-2">
-              <button 
-                className="list-item-product__cart-button btn btn-primary flex-grow-1"
+            <div className="d-flex gap-2">              <button 
+                className="list-item-product__cart-button flex-grow-1"
                 onClick={handleAddToCart}
               >
                 <i className="bi bi-cart-plus me-2"></i>
                 Adicionar
-              </button>
-              {onCompareToggle && (
+              </button>{onCompareToggle && (
                 <button 
-                  className={`list-item-product__compare-button btn ${isSelected ? 'btn-danger' : 'btn-outline-secondary'}`}
+                  className={`list-item-product__compare-button ${isSelected ? 'active' : ''}`}
                   onClick={onCompareToggle}
                   title={isSelected ? "Remover da comparação" : "Adicionar para comparar"}
                 >
