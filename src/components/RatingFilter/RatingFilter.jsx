@@ -1,12 +1,12 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 
-const RatingFilter = ({ value, onChange }) => {
+let RatingFilter = ({ value, onChange }) => {
   // Função para renderizar estrelas com base no valor atual
-  const renderStars = (rating) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
+  let renderStars = (rating) => {
+    let stars = [];
+    let fullStars = Math.floor(rating);
+    let hasHalfStar = rating % 1 >= 0.5;
     
     // Adiciona estrelas cheias
     for (let i = 0; i < fullStars; i++) {
@@ -19,7 +19,7 @@ const RatingFilter = ({ value, onChange }) => {
     }
     
     // Completa com estrelas vazias
-    const emptyStars = 5 - stars.length;
+    let emptyStars = 5 - stars.length;
     for (let i = 0; i < emptyStars; i++) {
       stars.push(<i key={`empty-${i}`} className="bi bi-star"></i>);
     }

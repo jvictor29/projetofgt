@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Pagination, Button, Spinner, Modal } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ProductFilter from '../../components/ProductFilter/ProductFilter';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import ProductListItem from '../../components/ProductListItem/ProductListItem';
+import CardProduto from '../../components/ProductCard/ProductCard';
+import ItemListaProduto from '../../components/ProductListItem/ProductListItem';
 import ProductListHeader from '../../components/ProductListHeader/ProductListHeader';
 import ProductSorting from '../../components/ProductSorting/ProductSorting';
 import { productsData, getFilteredProducts } from '../../data/products';
 import './ProductsPage.css';
 
-const ProductsPage = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+let ProductsPage = () => {
+  let location = useLocation();
+  let navigate = useNavigate();
   
   // Obter o termo de pesquisa da URL
-  const searchParams = new URLSearchParams(location.search);
-  const searchTerm = searchParams.get('search') || '';
+  let searchParams = new URLSearchParams(location.search);
+  let searchTerm = searchParams.get('search') || '';
   
   // Estados para gerenciar os produtos e a paginação
   const [products, setProducts] = useState([]);
@@ -52,17 +52,16 @@ const ProductsPage = () => {
       setLoading(false);
     }, 500);
   }, [filters, currentSort]);
-
   // Carregar filtros da URL quando a página é carregada
   useEffect(() => {
     // Obter parâmetros da URL
-    const urlSort = searchParams.get('sort');
-    const urlView = searchParams.get('view');
-    const urlBrands = searchParams.get('brands');
-    const urlCategories = searchParams.get('categories');
-    const urlMinPrice = searchParams.get('min_price');
-    const urlMaxPrice = searchParams.get('max_price');
-    const urlRating = searchParams.get('rating');
+    let urlSort = searchParams.get('sort');
+    let urlView = searchParams.get('view');
+    let urlBrands = searchParams.get('brands');
+    let urlCategories = searchParams.get('categories');
+    let urlMinPrice = searchParams.get('min_price');
+    let urlMaxPrice = searchParams.get('max_price');
+    let urlRating = searchParams.get('rating');
     
     // Configurar visualização
     if (urlView && (urlView === 'grid' || urlView === 'list')) {
@@ -76,7 +75,7 @@ const ProductsPage = () => {
     }
     
     // Preparar objeto de filtros
-    const urlFilters = { searchTerm };
+    let urlFilters = { searchTerm };
     
     // Adicionar marcas
     if (urlBrands) {
@@ -107,9 +106,8 @@ const ProductsPage = () => {
       setFilters(urlFilters);
     }
   }, []);
-
   // Função para adicionar/remover produto da lista de comparação
-  const toggleProductComparison = (product) => {
+  let toggleProductComparison = (product) => {
     setSelectedProducts(prevSelected => {
       if (prevSelected.some(p => p.id === product.id)) {
         // Se o produto já está na lista, removê-lo
@@ -127,7 +125,7 @@ const ProductsPage = () => {
   };
 
   // Função para limpar a lista de produtos selecionados
-  const clearSelectedProducts = () => {
+  let clearSelectedProducts = () => {
     setSelectedProducts([]);
   };
 
@@ -137,14 +135,13 @@ const ProductsPage = () => {
     if (savedViewMode) {
       setViewMode(savedViewMode);
     }
-  }, []);
-  // Salvar preferências do usuário para o modo de visualização
-  const handleViewModeChange = (mode) => {
+  }, []);  // Salvar preferências do usuário para o modo de visualização
+  let handleViewModeChange = (mode) => {
     setViewMode(mode);
     localStorage.setItem('viewMode', mode);
     
     // Atualizar URL para refletir o modo de visualização
-    const params = new URLSearchParams(location.search);
+    let params = new URLSearchParams(location.search);
     if (mode === 'grid') {
       params.delete('view');
     } else {
@@ -155,46 +152,45 @@ const ProductsPage = () => {
       search: params.toString()
     }, { replace: true });
   };
-
   // Calcular índices para a página atual
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  let indexOfLastProduct = currentPage * productsPerPage;
+  let indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  let currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
   // Número total de páginas
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  let totalPages = Math.ceil(products.length / productsPerPage);
 
   // Função para mudar a página
-  const handlePageChange = (pageNumber) => {
+  let handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo(0, 0); // Scroll para o topo ao mudar de página
   };
 
   // Função para mudar o número de produtos por página
-  const handleProductsPerPageChange = (number) => {
+  let handleProductsPerPageChange = (number) => {
     setProductsPerPage(number);
     setCurrentPage(1); // Resetar para a primeira página
   };  // Função para aplicar filtros
-  const handleFilterChange = (newFilters) => {
+  let handleFilterChange = (newFilters) => {
     // Preservar o termo de pesquisa ao aplicar outros filtros
-    const updatedFilters = { ...newFilters, searchTerm };
+    let updatedFilters = { ...newFilters, searchTerm };
     setFilters(updatedFilters);
     
     // Atualizar a URL com os filtros aplicados
     updateUrlWithFilters(updatedFilters);
   };
   // Função para ordenar produtos
-  const handleSortChange = (sortOption) => {
+  let handleSortChange = (sortOption) => {
     setCurrentSort(sortOption);
     
     // Atualizar a URL com a nova ordenação
-    const updatedFilters = { ...filters, sort: sortOption };
+    let updatedFilters = { ...filters, sort: sortOption };
     updateUrlWithFilters(updatedFilters);
   };
 
   // Função para atualizar a URL com os filtros aplicados
-  const updateUrlWithFilters = (appliedFilters) => {
-    const params = new URLSearchParams();
+  let updateUrlWithFilters = (appliedFilters) => {
+    let params = new URLSearchParams();
     
     // Adicionar termo de pesquisa se existir
     if (appliedFilters.searchTerm) {
@@ -336,24 +332,23 @@ const ProductsPage = () => {
       return (
         <Row className="row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
           {currentProducts.map(product => (
-            <ProductCard 
+            <CardProduto 
               key={product.id} 
-              product={product} 
-              isSelected={selectedProducts.some(p => p.id === product.id)}
-              onCompareToggle={() => toggleProductComparison(product)}
+              produto={product} 
+              estaSelecionado={selectedProducts.some(p => p.id === product.id)}
+              aoAlternarComparacao={() => toggleProductComparison(product)}
             />
           ))}
         </Row>
       );
     } else {
-      return (
-        <div className="products-list mb-5">
+      return (        <div className="products-list mb-5">
           {currentProducts.map(product => (
-            <ProductListItem 
+            <ItemListaProduto 
               key={product.id} 
-              product={product} 
-              isSelected={selectedProducts.some(p => p.id === product.id)}
-              onCompareToggle={() => toggleProductComparison(product)}
+              produto={product} 
+              estaSelecionado={selectedProducts.some(p => p.id === product.id)}
+              aoAlternarComparacao={() => toggleProductComparison(product)}
             />
           ))}
         </div>

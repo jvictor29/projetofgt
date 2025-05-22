@@ -2,9 +2,9 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import './ProductSorting.css';
 
-const ProductSorting = ({ currentSort, onSortChange }) => {
+let ProductSorting = ({ currentSort, onSortChange }) => {
   // Opções de ordenação disponíveis
-  const sortOptions = [
+  let sortOptions = [
     { id: 'featured', name: 'Destaques', icon: 'bi-star-fill' },
     { id: 'price-asc', name: 'Menor preço', icon: 'bi-sort-numeric-down' },
     { id: 'price-desc', name: 'Maior preço', icon: 'bi-sort-numeric-up' },
@@ -13,7 +13,7 @@ const ProductSorting = ({ currentSort, onSortChange }) => {
   ];
 
   // Encontrar a opção de ordenação atual
-  const currentSortOption = sortOptions.find(option => option.id === currentSort) || sortOptions[0];
+  let currentSortOption = sortOptions.find(option => option.id === currentSort) || sortOptions[0];
 
   return (
     <Dropdown className="product-sorting">

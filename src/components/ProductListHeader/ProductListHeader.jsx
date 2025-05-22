@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 import ProductSorting from '../ProductSorting/ProductSorting';
 import './ProductListHeader.css';
 
-const ProductListHeader = ({ 
+let ProductListHeader = ({ 
   totalProducts, 
   currentPage, 
   productsPerPage, 

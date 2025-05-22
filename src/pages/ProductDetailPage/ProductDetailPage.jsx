@@ -5,20 +5,20 @@ import { useCart } from '../../context/CartContext';
 import { getProductById } from '../../data/products';
 import './ProductDetailPage.css';
 
-const ProductDetailPage = () => {
-  const { id } = useParams();
-  const { addToCart } = useCart();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [quantity, setQuantity] = useState(1);
-  const [activeImage, setActiveImage] = useState(0);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+let ProductDetailPage = () => {
+  let { id } = useParams();
+  let { addToCart } = useCart();
+  let [product, setProduct] = useState(null);
+  let [loading, setLoading] = useState(true);
+  let [quantity, setQuantity] = useState(1);
+  let [activeImage, setActiveImage] = useState(0);
+  let [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   // Buscar dados do produto
   useEffect(() => {
-    const fetchProduct = () => {
+    let fetchProduct = () => {
       try {
-        const productData = getProductById(id);
+        let productData = getProductById(id);
         if (productData) {
           setProduct(productData);
         }

@@ -3,40 +3,39 @@ import { Form, Button } from 'react-bootstrap';
 import RatingFilter from '../RatingFilter/RatingFilter';
 import './ProductFilter.css';
 
-const ProductFilter = ({ onFilterChange }) => {
+let ProductFilter = ({ onFilterChange }) => {
   // Estados para armazenar os valores dos filtros
-  const [priceRange, setPriceRange] = useState(1000);
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000);
-  const [minRating, setMinRating] = useState(0);
-  const [brands, setBrands] = useState({
+  let [priceRange, setPriceRange] = useState(1000);
+  let [minPrice, setMinPrice] = useState(0);
+  let [maxPrice, setMaxPrice] = useState(1000);
+  let [minRating, setMinRating] = useState(0);
+  let [brands, setBrands] = useState({
     adidas: false,
     balenciaga: false,
     kswiss: true,
     nike: false,
     puma: false
   });
-  const [categories, setCategories] = useState({
+  let [categories, setCategories] = useState({
     sport: true,
     casual: false,
     utility: false,
     running: false  });
-  const [genders, setGenders] = useState({
+  let [genders, setGenders] = useState({
     male: true,
     female: true,
     unisex: false
   });
-  const [condition, setCondition] = useState('new');
-  
-  // Função para lidar com a mudança no filtro de preço
-  const handlePriceRangeChange = (e) => {
-    const value = parseInt(e.target.value);
+  let [condition, setCondition] = useState('new');
+    // Função para lidar com a mudança no filtro de preço
+  let handlePriceRangeChange = (e) => {
+    let value = parseInt(e.target.value);
     setPriceRange(value);
     setMaxPrice(value);
   };  // Lidar com mudanças nos checkboxes de marca
-  const handleBrandChange = (e) => {
+  let handleBrandChange = (e) => {
     // Extrair o nome da marca do ID removendo a palavra "Filter"
-    const brandName = e.target.id.replace('Filter', '').toLowerCase();
+    let brandName = e.target.id.replace('Filter', '').toLowerCase();
     
     setBrands({
       ...brands,
@@ -44,9 +43,9 @@ const ProductFilter = ({ onFilterChange }) => {
     });
   };
   // Lidar com mudanças nos checkboxes de categoria
-  const handleCategoryChange = (e) => {
+  let handleCategoryChange = (e) => {
     // Extrair o nome da categoria do ID removendo a palavra "Category" (com C maiúsculo)
-    const categoryName = e.target.id.replace('Category', '').toLowerCase();
+    let categoryName = e.target.id.replace('Category', '').toLowerCase();
     
     setCategories({
       ...categories,
@@ -55,20 +54,20 @@ const ProductFilter = ({ onFilterChange }) => {
   };
 
   // Lidar com mudanças nos checkboxes de gênero
-  const handleGenderChange = (e) => {
+  let handleGenderChange = (e) => {
     setGenders({
       ...genders,
       [e.target.id]: e.target.checked
     });
   };
   // Lidar com mudanças no estado (novo/usado)
-  const handleConditionChange = (e) => {
+  let handleConditionChange = (e) => {
     setCondition(e.target.id);
   };
 
   // Lidar com mudanças no preço mínimo
-  const handleMinPriceChange = (e) => {
-    const value = parseInt(e.target.value) || 0;
+  let handleMinPriceChange = (e) => {
+    let value = parseInt(e.target.value) || 0;
     setMinPrice(value);
   };
 

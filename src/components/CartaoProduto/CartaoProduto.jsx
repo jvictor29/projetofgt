@@ -1,14 +1,27 @@
+/**
+ * Componente CartaoProduto
+ * 
+ * Este componente renderiza um cartão de produto para exibição em grade na loja.
+ * 
+ * Funcionalidades:
+ * - Exibe imagem, marca, nome, preço e avaliações do produto
+ * - Mostra descontos quando disponíveis
+ * - Permite adicionar o produto ao carrinho
+ * - Suporta funcionalidade de comparação entre produtos
+ * - Exibe uma notificação toast ao adicionar produto ao carrinho
+ */
+
 import React from 'react';
 import { Card, Button, Toast, ToastContainer } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
-import './ProductCard.css';
+import './CartaoProduto.css';
 
-let CardProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao }) => {
-  let { addToCart: adicionarAoCarrinho } = useCart();
-  let [mostrarToast, setMostrarToast] = React.useState(false);
+const CartaoProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao }) => {
+  const { addToCart: adicionarAoCarrinho } = useCart();
+  const [mostrarToast, setMostrarToast] = React.useState(false);
   
-  let { 
+  const { 
     id, 
     brand: marca, 
     name: nome, 
@@ -17,15 +30,19 @@ let CardProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao }) =
     currentPrice: precoAtual, 
     discount: desconto, 
     rating: avaliacao, 
-    reviewCount: quantidadeAvaliacoes 
+    reviewCount: numeroAvaliacoes 
   } = produto;
-  // Renderização das estrelas com base na classificação
-  let renderizarEstrelas = (avaliacao) => {
-    let estrelas = [];
-    let estrelasCompletas = Math.floor(avaliacao);
-    let temMeiaEstrela = avaliacao % 1 >= 0.5;
-    
-    // Adiciona estrelas cheias
+
+  /**
+   * Renderiza as estrelas de avaliação com base na pontuação
+   * @param {number} avaliacao - A pontuação da avaliação (0-5)
+   * @returns {Array} Array de elementos de estrelas
+   */
+  const renderizarEstrelas = (avaliacao) => {
+    const estrelas = [];
+    const estrelasCompletas = Math.floor(avaliacao);
+    const temMeiaEstrela = avaliacao % 1 >= 0.5;
+      // Adiciona estrelas cheias
     for (let i = 0; i < estrelasCompletas; i++) {
       estrelas.push(<i key={`estrela-${i}`} className="bi bi-star-fill"></i>);
     }
@@ -33,18 +50,19 @@ let CardProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao }) =
     // Adiciona meia estrela, se necessário
     if (temMeiaEstrela) {
       estrelas.push(<i key="meia-estrela" className="bi bi-star-half"></i>);
-    }    
+    }
+    
     // Completa com estrelas vazias
-    let estrelasVazias = 5 - estrelas.length;
+    const estrelasVazias = 5 - estrelas.length;
     for (let i = 0; i < estrelasVazias; i++) {
       estrelas.push(<i key={`vazia-${i}`} className="bi bi-star"></i>);
     }
     
     return estrelas;
   };
-  
-  // Função para adicionar ao carrinho
-  let handleAdicionarAoCarrinho = () => {
+    /**
+   * Função para adicionar produto ao carrinho
+   */  const handleAdicionarAoCarrinho = () => {
     adicionarAoCarrinho(produto);
     setMostrarToast(true);
   };
@@ -54,13 +72,13 @@ let CardProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao }) =
         <div className={`card_produto ${estaSelecionado ? 'card_produto--selected' : ''}`}>
           {desconto && (
             <div className="card_produto__desconto_area">
-              <span className="card_produto__desconto">{desconto}% OFF</span>
+              <span className="card_produto__desconto">-{desconto}% OFF</span>
             </div>
-          )}          <div className="card_produto__area_imagem">
+          )}
+          <div className="card_produto__area_imagem">
             <Link to={`/produtos/${id}`}>
-              <img src={imagem} alt={nome} className="card_produto__imagem" />
-              <div className="card_produto__imagem_overlay">
-                <span className="card_produto__view_details">
+              <img src={imagem} alt={nome} className="card_produto__imagem" />              <div className="card_produto__imagem_overlay">
+                <span className="card_produto__visualizacao_rapida">
                   <i className="bi bi-eye me-1"></i> Ver detalhes
                 </span>
               </div>
@@ -77,19 +95,24 @@ let CardProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao }) =
               <div className="card_produto__avaliacao_estrelas">
                 {renderizarEstrelas(avaliacao)}
               </div>
-              <span className="card_produto__avaliacao_total">({quantidadeAvaliacoes})</span>
+              <span className="card_produto__avaliacao_total">({numeroAvaliacoes})</span>
             </div>
             <div className="card_produto__preco_area">
-              {precoAntigo && <del className="card_produto__preco_antigo">R${precoAntigo.toFixed(2).replace('.', ',')}</del>}
-              <span className="card_produto__preco_atual">R${precoAtual.toFixed(2).replace('.', ',')}</span>
-            </div>            <div className="d-flex gap-2">
+              {precoAntigo && (
+                <>
+                  <del className="card_produto__preco_antigo">R${precoAntigo.toFixed(2).replace('.', ',')}</del>
+                  {desconto && <span className="card_produto__economia">Economize R${(precoAntigo - precoAtual).toFixed(2).replace('.', ',')}</span>}
+                </>
+              )}              <span className="card_produto__preco_atual">R${precoAtual.toFixed(2).replace('.', ',')}</span>
+            </div>
+            <div className="d-flex gap-2">
               <button 
                 className="card_produto__botao_carrinho flex-grow-1"
                 onClick={handleAdicionarAoCarrinho}
-              >                <i className="bi bi-cart-plus card_produto__icone_carrinho"></i>
+              >
+                <i className="bi bi-cart-plus card_produto__icone_carrinho"></i>
                 Adicionar
-              </button>
-              {aoAlternarComparacao && (
+              </button>              {aoAlternarComparacao && (
                 <button 
                   className={`card_produto__botao_comparar ${estaSelecionado ? 'active' : ''}`}
                   onClick={aoAlternarComparacao}
@@ -97,7 +120,8 @@ let CardProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao }) =
                 >
                   <i className={`bi ${estaSelecionado ? 'bi-dash-circle' : 'bi-bar-chart'}`}></i>
                 </button>
-              )}            </div>
+              )}
+            </div>
           </div>
         </div>
       </article>
@@ -122,4 +146,4 @@ let CardProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao }) =
   );
 };
 
-export default CardProduto;
+export default CartaoProduto;
