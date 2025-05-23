@@ -1,4 +1,7 @@
-/* Estilo do card de produto */
+/* Estilos para o componente de Cartão de Produto
+ * Este arquivo contém todos os estilos CSS para o cartão de produto que é exibido 
+ * na visualização em grade da loja.
+ */
 
 .card_produto {
   background-color: white;
@@ -11,12 +14,14 @@
   border: 2px solid transparent;
 }
 
+/* Estilo para quando o cartão está selecionado para comparação */
 .card_produto--selected {
   border: 2px solid #C92071;
   box-shadow: 0 8px 20px rgba(201, 32, 113, 0.15);
   position: relative;
 }
 
+/* Adiciona um marcador de seleção quando o produto está selecionado */
 .card_produto--selected::after {
   content: '✓';
   position: absolute;
@@ -37,6 +42,7 @@
   z-index: 2;
 }
 
+/* Animação de pulsação para o marcador de seleção */
 @keyframes pulseEffect {
   0% {
     transform: scale(1);
@@ -52,11 +58,13 @@
   }
 }
 
+/* Efeito hover para o cartão */
 .card_produto:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Área de desconto/etiqueta promocional */
 .card_produto__desconto_area {
   position: absolute;
   top: 16px;
@@ -83,17 +91,19 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Área da imagem do produto */
 .card_produto__area_imagem {
   padding: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 320px; /* Aumentado para 320px */
+  height: 300px; /* Altura do contêiner da imagem */
   background-color: white;
   position: relative;
   overflow: hidden;
 }
 
+/* Efeito de brilho radial na área da imagem */
 .card_produto__area_imagem::after {
   content: '';
   position: absolute;
@@ -106,6 +116,7 @@
   transition: opacity 0.3s ease;
 }
 
+/* Efeito de brilho diagonal na área da imagem */
 .card_produto__area_imagem::before {
   content: '';
   position: absolute;
@@ -142,6 +153,7 @@
   }
 }
 
+/* Overlay da imagem com botão "Ver detalhes" */
 .card_produto__imagem_overlay {
   position: absolute;
   top: 0;
@@ -157,7 +169,7 @@
   padding: 20px;
 }
 
-.card_produto__quick_view {
+.card_produto__visualizacao_rapida {
   background-color: rgba(255, 255, 255, 0.9);
   color: #333;
   padding: 8px 16px;
@@ -171,7 +183,7 @@
   border-left: 3px solid #C92071;
 }
 
-.card_produto:hover .card_produto__quick_view {
+.card_produto:hover .card_produto__visualizacao_rapida {
   transform: translateY(0);
   opacity: 1;
   background-color: rgba(255, 255, 255, 0.95);
@@ -180,48 +192,30 @@
 
 .card_produto:hover .card_produto__imagem_overlay {
   opacity: 1;
-  background: rgba(0, 0, 0, 0.07);
 }
 
-.card_produto__view_details {
-  background-color: white;
-  color: #1F1F1F;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 500;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-}
-
-.card_produto:hover .card_produto__view_details {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card_produto__imagem {  max-width: 90%;
+/* Imagem do produto */
+.card_produto__imagem {
+  max-width: 90%;
   max-height: 90%;
   object-fit: contain;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 1;
-  transform: rotate(-30deg) translateX(-10px);
-  transform-origin: center center;
+  transform: rotate(-20deg);
   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.05));
 }
 
 .card_produto:hover .card_produto__imagem {
-  transform: rotate(-30deg) translateX(-10px) scale(1.25);
+  transform: rotate(-20deg) scale(1.15);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
 }
 
+/* Corpo do cartão (informações do produto) */
 .card_produto__corpo {
   padding: 20px;
 }
 
+/* Estilo para a marca do produto */
 .card_produto__marca {
   color: #8F8F8F;
   font-size: 13px;
@@ -231,11 +225,13 @@
   font-weight: 500;
 }
 
+/* Estilo para o título/nome do produto */
 .card_produto__titulo {
   font-size: 16px;
   font-weight: 600;
   color: #333333;
-  margin-bottom: 10px;  min-height: 40px;
+  margin-bottom: 10px;
+  min-height: 40px;
   line-height: 1.4;
   transition: color 0.3s ease;
   display: -webkit-box;
@@ -261,6 +257,7 @@
   background-size: 100% 100%;
 }
 
+/* Área de avaliação e estrelas */
 .card_produto__avaliacao_area {
   display: flex;
   align-items: center;
@@ -279,6 +276,7 @@
   font-size: 12px;
 }
 
+/* Indicador de estoque */
 .card_produto__estoque {
   margin-bottom: 15px;
 }
@@ -298,6 +296,7 @@
   background-color: #f8f9fa;
 }
 
+/* Área de preço */
 .card_produto__preco_area {
   margin-bottom: 15px;
   display: flex;
@@ -338,6 +337,7 @@
   transform: scale(1.03);
 }
 
+/* Botão de adicionar ao carrinho */
 .card_produto__botao_carrinho {
   background-color: #C92071;
   color: white;
@@ -359,6 +359,7 @@
   overflow: hidden;
 }
 
+/* Efeito de brilho no botão de adicionar ao carrinho */
 .card_produto__botao_carrinho::before {
   content: '';
   position: absolute;
@@ -390,6 +391,7 @@
   font-size: 16px;
 }
 
+/* Botão de comparar produtos */
 .card_produto__botao_comparar {
   background-color: #f8f9fa;
   border: 1px solid #e2e2e2;
@@ -412,40 +414,20 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card_produto__botao_comparar.active {
+.card_produto__botao_comparar.card_produto__botao_comparar--selecionado {
   background-color: #C92071;
   border-color: #C92071;
   color: white;
   box-shadow: 0 4px 10px rgba(201, 32, 113, 0.2);
 }
 
-.card_produto__botao_comparar.active:hover {
+.card_produto__botao_comparar.card_produto__botao_comparar--selecionado:hover {
   background-color: #a01a5f;
   border-color: #a01a5f;
   box-shadow: 0 4px 12px rgba(201, 32, 113, 0.3);
 }
 
-/* Estilo para o link Ver Detalhes */
-.card_produto__link_detalhes {
-  color: #474747;
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-}
-
-.card_produto__link_detalhes:hover {
-  color: #C92071;
-  text-decoration: underline;
-}
-
-.card_produto__link_detalhes i {
-  font-size: 0.9rem;
-}
-
-/* Adicionar uma animação sutil quando o card é carregado */
+/* Animação de entrada para os cartões */
 @keyframes cardFadeIn {
   from {
     opacity: 0;
@@ -457,33 +439,7 @@
   }
 }
 
-.col:nth-child(1) .card_produto { animation-delay: 0.05s; }
-.col:nth-child(2) .card_produto { animation-delay: 0.1s; }
-.col:nth-child(3) .card_produto { animation-delay: 0.15s; }
-.col:nth-child(4) .card_produto { animation-delay: 0.2s; }
-.col:nth-child(5) .card_produto { animation-delay: 0.25s; }
-.col:nth-child(6) .card_produto { animation-delay: 0.3s; }
-.col:nth-child(7) .card_produto { animation-delay: 0.35s; }
-.col:nth-child(8) .card_produto { animation-delay: 0.4s; }
-.col:nth-child(9) .card_produto { animation-delay: 0.45s; }
-
-.card_produto {
-  animation: cardFadeIn 0.6s ease forwards;
-  opacity: 0;
-}
-
-/* Adicionar uma animação sutil quando o card é carregado */
-@keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Atraso na animação de entrada para criar efeito escalonado */
 .col:nth-child(1) .card_produto { animation-delay: 0.05s; }
 .col:nth-child(2) .card_produto { animation-delay: 0.1s; }
 .col:nth-child(3) .card_produto { animation-delay: 0.15s; }

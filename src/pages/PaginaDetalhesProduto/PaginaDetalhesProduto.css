@@ -1,13 +1,13 @@
-.product-detail-page {
+.pagina-detalhes-produto {
   color: #474747;
 }
 
 /* Galeria de imagens */
-.product-gallery {
+.galeria-produto {
   position: relative;
 }
 
-.main-product-image {
+.imagem-produto-principal {
   border-radius: 8px;
   object-fit: contain;
   background-color: #f8f9fa;
@@ -16,14 +16,14 @@
   max-height: 450px;
 }
 
-.product-thumbnails {
+.miniaturas-produto {
   display: flex;
   gap: 10px;
   overflow-x: auto;
   padding-bottom: 10px;
 }
 
-.product-thumbnail-item {
+.item-miniatura-produto {
   width: 80px;
   height: 80px;
   border-radius: 8px;
@@ -33,17 +33,17 @@
   transition: all 0.3s ease;
 }
 
-.product-thumbnail-item.active {
+.item-miniatura-produto.ativo {
   border-color: #C92071;
 }
 
-.product-thumbnail-item img {
+.item-miniatura-produto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.product-discount-badge {
+.selo-desconto-produto {
   position: absolute;
   top: 15px;
   left: 15px;
@@ -53,69 +53,69 @@
 }
 
 /* Informações do produto */
-.product-brand {
+.marca-produto {
   color: #666;
   font-size: 0.9rem;
   font-weight: 500;
   text-transform: uppercase;
 }
 
-.product-title {
+.titulo-produto {
   font-size: 1.8rem;
   font-weight: 700;
   color: #212529;
 }
 
-.product-rating {
+.avaliacao-produto {
   display: flex;
   align-items: center;
 }
 
-.product-stars {
+.estrelas-produto {
   color: #F6AA1C;
   margin-right: 10px;
 }
 
-.product-stars i {
+.estrelas-produto i {
   margin-right: 2px;
 }
 
-.product-review-count {
+.contagem-avaliacao-produto {
   color: #666;
   font-size: 0.9rem;
 }
 
-.product-price {
+.preco-produto {
   display: flex;
   flex-direction: column;
 }
 
-.product-old-price {
+.preco-antigo-produto {
   color: #999;
   text-decoration: line-through;
   font-size: 1rem;
 }
 
-.product-current-price {
+.preco-atual-produto {
   color: #C92071;
   font-size: 1.8rem;
   font-weight: 700;
   margin-right: 10px;
 }
 
-.product-installments {
+.parcelas-produto {
   color: #666;
   font-size: 0.9rem;
 }
 
-.product-description {
+.descricao-produto {
   font-size: 0.95rem;
   line-height: 1.6;
   color: #555;
 }
 
 /* Seletor de quantidade */
-.quantity-controls {
+.controles-quantidade {
   display: flex;
   align-items: center;
   border: 1px solid #ddd;
@@ -123,7 +123,7 @@
   overflow: hidden;
 }
 
-.quantity-controls button {
+.controles-quantidade button {
   border: none;
   background-color: #f5f5f5;
   color: #333;
@@ -136,7 +136,7 @@
   font-weight: bold;
 }
 
-.quantity-display {
+.exibicao-quantidade {
   width: 40px;
   text-align: center;
   font-weight: bold;
@@ -144,31 +144,31 @@
 }
 
 /* Botões de ação */
-.add-to-cart-btn {
+.btn-adicionar-carrinho {
   background-color: #C92071;
   border-color: #C92071;
 }
 
-.add-to-cart-btn:hover {
+.btn-adicionar-carrinho:hover {
   background-color: #a01a5f;
   border-color: #a01a5f;
 }
 
-.buy-now-btn {
+.btn-comprar-agora {
   border-color: #ddd;
   color: #333;
 }
 
-.buy-now-btn:hover {
+.btn-comprar-agora:hover {
   background-color: #f5f5f5;
 }
 
 /* Tabs de informações */
-.product-details-tabs .nav-tabs {
+.tabs-detalhes-produto .nav-tabs {
   border-bottom: 1px solid #ddd;
 }
 
-.product-details-tabs .nav-link {
+.tabs-detalhes-produto .nav-link {
   color: #666;
   font-weight: 500;
   border: none;
@@ -176,96 +176,96 @@
   padding: 12px 20px;
 }
 
-.product-details-tabs .nav-link.active {
+.tabs-detalhes-produto .nav-link.active {
   color: #C92071;
   background-color: transparent;
   border-bottom: 3px solid #C92071;
 }
 
 /* Especificações */
-.specs-table {
+.tabela-especificacoes {
   display: flex;
   flex-direction: column;
 }
 
-.specs-row {
+.linha-especificacoes {
   display: flex;
   border-bottom: 1px solid #eee;
   padding: 10px 0;
 }
 
-.specs-row:last-child {
+.linha-especificacoes:last-child {
   border-bottom: none;
 }
 
-.specs-label {
+.rotulo-especificacoes {
   min-width: 180px;
   font-weight: 500;
   color: #666;
 }
 
-.specs-value {
+.valor-especificacoes {
   flex-grow: 1;
   text-transform: capitalize;
 }
 
 /* Avaliações */
-.overall-rating {
+.avaliacao-geral {
   text-align: center;
   padding-right: 20px;
   border-right: 1px solid #ddd;
 }
 
-.rating-number {
+.numero-avaliacao {
   font-size: 2.5rem;
   font-weight: 700;
   color: #333;
   line-height: 1;
 }
 
-.rating-bar {
+.barra-avaliacao {
   display: flex;
   align-items: center;
   margin-bottom: 8px;
 }
 
-.rating-bar span {
+.barra-avaliacao span {
   min-width: 80px;
   font-size: 0.9rem;
 }
 
-.rating-bar .progress {
+.barra-avaliacao .progress {
   flex-grow: 1;
   margin: 0 10px;
   height: 8px;
 }
 
-.write-review-btn {
+.btn-escrever-avaliacao {
   margin-top: 20px;
 }
 
 /* Responsividade */
 @media (max-width: 992px) {
-  .product-title {
+  .titulo-produto {
     font-size: 1.5rem;
   }
   
-  .product-current-price {
+  .preco-atual-produto {
     font-size: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
-  .overall-rating {
+  .avaliacao-geral {
     padding-right: 15px;
   }
   
-  .rating-bar span {
+  .barra-avaliacao span {
     min-width: 60px;
     font-size: 0.8rem;
   }
   
-  .product-thumbnail-item {
+  .item-miniatura-produto {
     width: 60px;
     height: 60px;
   }

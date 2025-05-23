@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useCart } from '../../context/CartContext';
+import { useCarrinho } from '../../context/ContextoCarrinho';
 import './Header.css';
 
 const Header = () => {
@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate();
   const path = location.pathname;
   const [searchTerm, setSearchTerm] = useState('');
-  const { getCartItemCount } = useCart();
+  const { obterQuantidadeItensCarrinho } = useCarrinho();
 
   // Função para lidar com a pesquisa
   const handleSearch = (e) => {
@@ -39,14 +39,13 @@ const Header = () => {
             <i className="bi bi-search header-search-icon"></i>
           </button>
         </form>        {/* Botões de acesso: Cadastro, Login e Carrinho */}
-        <div className="header-actions">
-          <Link to="/cadastro" className="header-register">Cadastre-se</Link>
+        <div className="header-actions">          <Link to="/cadastro" className="header-register">Cadastre-se</Link>
           <button className="header-login">Entrar</button>
           <Link to="/carrinho" className="header-cart position-relative">
             <i className="bi bi-cart-fill"></i>
-            {getCartItemCount() > 0 && (
+            {obterQuantidadeItensCarrinho() > 0 && (
               <span className="header-cart-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                {getCartItemCount()}
+                {obterQuantidadeItensCarrinho()}
               </span>
             )}
           </Link>

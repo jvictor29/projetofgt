@@ -17,15 +17,15 @@ import OrdenacaoProdutos from '../OrdenacaoProdutos/OrdenacaoProdutos';
 import './CabecalhoListaProdutos.css';
 
 const CabecalhoListaProdutos = ({ 
-  totalProducts: totalProdutos, 
-  currentPage: paginaAtual, 
-  productsPerPage: produtosPorPagina, 
-  onProductsPerPageChange: aoMudarProdutosPorPagina, 
-  viewMode: modoVisualizacao,
-  onViewModeChange: aoMudarModoVisualizacao,
-  currentSort: ordenacaoAtual,
-  onSortChange: aoMudarOrdenacao
-}) => {  return (
+  totalProdutos, 
+  paginaAtual, 
+  produtosPorPagina, 
+  aoMudarProdutosPorPagina, 
+  modoVisualizacao,
+  aoMudarModoVisualizacao,
+  ordenacaoAtual,
+  aoMudarOrdenacao
+}) => {return (
     <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 bg-light p-3 rounded">
       <div className="d-flex align-items-center mb-2 mb-md-0">
         <span className="me-3 text-muted small">
@@ -51,8 +51,7 @@ const CabecalhoListaProdutos = ({
           </Button>
         </ButtonGroup>      </div>
       
-      <div className="d-flex align-items-center">
-        {aoMudarOrdenacao && (
+      <div className="d-flex align-items-center">        {aoMudarOrdenacao && (
           <OrdenacaoProdutos 
             ordenacaoAtual={ordenacaoAtual}
             aoMudarOrdenacao={aoMudarOrdenacao}

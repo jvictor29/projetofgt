@@ -18,13 +18,15 @@ import FiltroAvaliacao from '../FiltroAvaliacao/FiltroAvaliacao';
 import './FiltroProduto.css';
 
 const FiltroProduto = ({ onFilterChange }) => {
+  // Refs para controle
+  const previousFilters = useRef(null);
+  const isFirstRender = useRef(true);
+  
   // Estados para armazenar os valores dos filtros
   const [faixaPreco, setFaixaPreco] = useState(1000);
   const [precoMinimo, setPrecoMinimo] = useState(0);
   const [precoMaximo, setPrecoMaximo] = useState(1000);
   const [avaliacaoMinima, setAvaliacaoMinima] = useState(0);
-  // Referência para evitar chamadas duplicadas
-  const previousFilters = useRef(null);
   const [marcas, setMarcas] = useState({
     adidas: false,
     balenciaga: false,
@@ -217,10 +219,8 @@ const FiltroProduto = ({ onFilterChange }) => {
     onFilterChange(filtros);
   };/**
    * Efeito para aplicar filtros quando os valores mudarem
-   */
-  useEffect(() => {
-    // Use uma ref para controlar se é a primeira renderização
-    const isFirstRender = React.useRef(true);
+   */  useEffect(() => {
+    // Usar a ref já declarada fora do useEffect
     
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -230,9 +230,8 @@ const FiltroProduto = ({ onFilterChange }) => {
     // Para evitar loops, só aplica os filtros se não for primeira montagem
     aplicarFiltros();
   }, [marcas, categorias, generos, precoMinimo, precoMaximo, avaliacaoMinima, condicao]);
-
   return (
-    <aside className="product-filter-sidebar">
+    <aside className="barra-lateral-filtro-produto">
       <section className="p-3 bg-white rounded shadow-sm">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2 className="fs-5 fw-bold m-0">Filtros</h2>

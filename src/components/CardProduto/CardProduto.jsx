@@ -11,14 +11,14 @@
  * - Exibe uma notificação toast ao adicionar produto ao carrinho
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, Button, Toast, ToastContainer } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../context/CartContext';
-import './CartaoProduto.css';
+import { useCarrinho } from '../../context/ContextoCarrinho';
+import './CardProduto.css';
 
-const CartaoProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao }) => {
-  const { addToCart: adicionarAoCarrinho } = useCart();
+const CardProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao }) => {
+  const { adicionarAoCarrinho } = useCarrinho();
   const [mostrarToast, setMostrarToast] = React.useState(false);
   
   const { 
@@ -66,6 +66,24 @@ const CartaoProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao 
     adicionarAoCarrinho(produto);
     setMostrarToast(true);
   };
+
+  // Efeito para esconder o toast automaticamente
+  useEffect(() => {
+    let timerId;
+    if (mostrarToast) {
+      timerId = setTimeout(() => {
+        setMostrarToast(false);
+      }, 3000);
+    }
+    
+    // Limpeza do timer se o componente for desmontado
+    return () => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    };
+  }, [mostrarToast]);
+
   return (
     <>
       <article className="col">
@@ -114,7 +132,7 @@ const CartaoProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao 
                 Adicionar
               </button>              {aoAlternarComparacao && (
                 <button 
-                  className={`card_produto__botao_comparar ${estaSelecionado ? 'active' : ''}`}
+                  className={`card_produto__botao_comparar ${estaSelecionado ? 'card_produto__botao_comparar--selecionado' : ''}`}
                   onClick={aoAlternarComparacao}
                   title={estaSelecionado ? "Remover da comparação" : "Adicionar para comparar"}
                 >
@@ -123,15 +141,11 @@ const CartaoProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao 
               )}
             </div>
           </div>
-        </div>
-      </article>
-      
+        </div>      </article>
       <ToastContainer position="bottom-right" className="p-3">
         <Toast 
           onClose={() => setMostrarToast(false)} 
           show={mostrarToast} 
-          delay={3000} 
-          autohide
           bg="success"
         >
           <Toast.Header>
@@ -146,4 +160,4 @@ const CartaoProduto = ({ produto, estaSelecionado = false, aoAlternarComparacao 
   );
 };
 
-export default CartaoProduto;
+export default CardProduto;

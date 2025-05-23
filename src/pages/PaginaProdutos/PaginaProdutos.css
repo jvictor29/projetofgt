@@ -27,19 +27,19 @@
 }
 
 /* Estilização para visualização em lista */
-.products-list {
+.container-visualizacao-lista {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
 /* Animação de transição entre modos de visualização */
-.row, .products-list {
+.row, .container-visualizacao-lista {
   transition: all 0.3s ease;
 }
 
 /* Estilização de filtros */
-.secao_filtro {
+.secao-filtro {
   background-color: #fff;
   border-radius: 8px;
   padding: 15px;
@@ -47,31 +47,31 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.secao_filtro .form-label {
+.secao-filtro .form-label {
   font-weight: 600;
   color: #474747;
   margin-bottom: 10px;
 }
 
-.secao_filtro .form-check-label {
+.secao-filtro .form-check-label {
   color: #474747;
 }
 
-.secao_filtro .form-range::-webkit-slider-thumb {
+.secao-filtro .form-range::-webkit-slider-thumb {
   background-color: #C92071;
 }
 
-.secao_filtro .form-range::-moz-range-thumb {
+.secao-filtro .form-range::-moz-range-thumb {
   background-color: #C92071;
 }
 
 /* Estilos para o botão de comparação e tabela de comparação de produtos */
-.list-item-product__cart-button:hover {
+.item-lista-produto__botao-carrinho:hover {
   background-color: #a01a5f;
   border-color: #a01a5f;
 }
 
-.list-item-product__compare-button {
+.item-lista-produto__botao-comparar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,24 +80,24 @@
 }
 
 /* Estilo para a tabela de comparação de produtos */
-.comparison-table {
+.tabela-comparacao {
   border-collapse: separate;
   border-spacing: 0;
 }
 
-.comparison-table th {
+.tabela-comparacao th {
   background-color: #f8f9fa;
   border-bottom: 2px solid #dee2e6;
   padding: 12px;
 }
 
-.comparison-table td {
+.tabela-comparacao td {
   vertical-align: middle;
   padding: 12px;
 }
 
 /* Estilo para o botão flutuante de comparação */
-.products-compare-button .btn {
+.botao-comparacao-produtos .btn {
   border-radius: 30px;
   padding: 10px 20px;
   font-weight: 600;
@@ -118,7 +118,7 @@
 }
 
 /* Estilo para o componente de comparação de produtos */
-.product-comparison-button {
+.botao-comparacao-produtos {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -145,7 +145,7 @@
 }
 
 /* Estilo para o container de produtos vazio */
-.empty-product-container {
+.container-produto-vazio {
   text-align: center;
   padding: 50px 20px;
   background-color: #f8f9fa;
@@ -153,50 +153,50 @@
   margin-bottom: 30px;
 }
 
-.empty-product-container i {
+.container-produto-vazio i {
   font-size: 3rem;
   color: #dee2e6;
   margin-bottom: 15px;
 }
 
-.empty-product-container h3 {
+.container-produto-vazio h3 {
   color: #6c757d;
   margin-bottom: 10px;
 }
 
-.empty-product-container p {
+.container-produto-vazio p {
   color: #adb5bd;
 }
 
 /* Estilo para mensagem de nenhum produto encontrado */
-.no-products-found {
+.sem-produtos-encontrados {
   padding: 40px 20px;
   background-color: #f8f9fa;
   border-radius: 8px;
   margin-bottom: 30px;
 }
 
-.no-products-found .icon-no-results {
+.sem-produtos-encontrados .icone-sem-resultados {
   font-size: 3rem;
   color: #dee2e6;
   display: block;
 }
 
 /* Efeito de transição suave ao alternar entre visualizações */
-.fade-transition-enter {
+.transicao-fade-entrada {
   opacity: 0;
 }
 
-.fade-transition-enter-active {
+.transicao-fade-entrada-ativa {
   opacity: 1;
   transition: opacity 300ms;
 }
 
-.fade-transition-exit {
+.transicao-fade-saida {
   opacity: 1;
 }
 
-.fade-transition-exit-active {
+.transicao-fade-saida-ativa {
   opacity: 0;
   transition: opacity 300ms;
 }

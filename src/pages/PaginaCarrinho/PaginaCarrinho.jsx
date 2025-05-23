@@ -1,46 +1,58 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Container, Row, Col, Button, Table, Form, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../context/CartContext';
-import './CartPage.css';
+import { useCarrinho } from '../../context/ContextoCarrinho';
+import './PaginaCarrinho.css';
 
-const CartPage = () => {
-  const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
+const PaginaCarrinho = () => {
+  const { 
+    carrinho, 
+    atualizarQuantidade, 
+    removerDoCarrinho, 
+    limparCarrinho 
+  } = useCarrinho();
   
-  // Calcular subtotal
-  const subtotal = cart.reduce((total, item) => total + (item.currentPrice * item.quantity), 0);
-  
-  // Simular frete (valor fixo para demonstração)
-  const shipping = subtotal > 0 ? 15.90 : 0;
-  
-  // Calcular total
-  const total = subtotal + shipping;
-  // Função para atualizar a quantidade
-  const handleQuantityChange = async (id, newQuantity) => {
-    if (newQuantity >= 1) {
+  const estaMontado = useRef(true);
+
+  useEffect(() => {
+    estaMontado.current = true;
+    return () => {
+      estaMontado.current = false;
+    };
+  }, []);
+
+  const subtotal = carrinho.reduce((total, item) => total + (item.currentPrice * item.quantidade), 0);
+  const frete = subtotal > 0 ? 15.90 : 0;
+  const total = subtotal + frete;
+
+  const manipularMudancaQuantidade = async (id, novaQuantidade) => {
+    if (novaQuantidade >= 1) {
       try {
-        await updateQuantity(id, newQuantity);
+        if (estaMontado.current) {
+          await atualizarQuantidade(id, novaQuantidade);
+        }
       } catch (error) {
-        console.error('Erro ao atualizar quantidade:', error);
+        if (estaMontado.current) {
+          console.error('Erro ao atualizar quantidade:', error);
+        }
       }
     }
   };
 
-  // Formatar valores para moeda
-  const formatCurrency = (value) => {
-    return `R$ ${value.toFixed(2).replace('.', ',')}`;
+  const formatarMoeda = (valor) => {
+    return `R$ ${valor.toFixed(2).replace('.', ',')}`;
   };
 
   return (
     <Container className="my-5 cart-page">
       <h1 className="mb-4">Meu Carrinho</h1>
       
-      {cart.length > 0 ? (
+      {carrinho.length > 0 ? (
         <Row>
           <Col md={8}>
             <Card className="mb-4">
               <Card.Header className="bg-light">
-                <h5 className="mb-0">Itens do Carrinho ({cart.length})</h5>
+                <h5 className="mb-0">Itens do Carrinho ({carrinho.length})</h5>
               </Card.Header>
               <Card.Body className="p-0">
                 <Table responsive className="mb-0">
@@ -55,7 +67,7 @@ const CartPage = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {cart.map((item) => (
+                    {carrinho.map((item) => (
                       <tr key={item.id} className="align-middle">
                         <td className="text-center">
                           <Link to={`/produtos/${item.id}`}>
@@ -72,44 +84,49 @@ const CartPage = () => {
                             {item.name}
                           </Link>
                           <div className="text-muted small">{item.brand}</div>
-                        </td>
-                        <td className="text-center">{formatCurrency(item.currentPrice)}</td>
+                        </td>                        
+                        <td className="text-center">{formatarMoeda(item.currentPrice)}</td>
                         <td className="text-center" style={{ width: '150px' }}>
                           <div className="d-flex align-items-center justify-content-center">
                             <Button 
                               variant="outline-secondary" 
                               size="sm"
-                              onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
-                              disabled={item.quantity <= 1}
+                              onClick={() => manipularMudancaQuantidade(item.id, item.quantidade - 1)}
+                              disabled={item.quantidade <= 1}
                             >
                               -
                             </Button>
                             <Form.Control
                               type="number"
                               min="1"
-                              value={item.quantity}
-                              onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value) || 1)}
+                              value={item.quantidade}
+                              onChange={(e) => manipularMudancaQuantidade(item.id, parseInt(e.target.value) || 1)}
                               className="text-center mx-2"
                               style={{ width: '60px' }}
                             />
                             <Button 
                               variant="outline-secondary" 
                               size="sm"
-                              onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
+                              onClick={() => manipularMudancaQuantidade(item.id, item.quantidade + 1)}
                             >
                               +
                             </Button>
                           </div>
                         </td>
-                        <td className="text-center fw-bold">{formatCurrency(item.currentPrice * item.quantity)}</td>
-                        <td className="text-center">                          <Button 
+                        <td className="text-center fw-bold">{formatarMoeda(item.currentPrice * item.quantidade)}</td>
+                        <td className="text-center">
+                          <Button 
                             variant="outline-danger" 
                             size="sm"
                             onClick={async () => {
                               try {
-                                await removeFromCart(item.id);
+                                if (estaMontado.current) {
+                                  await removerDoCarrinho(item.id);
+                                }
                               } catch (error) {
-                                console.error('Erro ao remover item:', error);
+                                if (estaMontado.current) {
+                                  console.error('Erro ao remover item:', error);
+                                }
                               }
                             }}
                           >
@@ -129,13 +146,18 @@ const CartPage = () => {
                 >
                   <i className="bi bi-arrow-left me-2"></i>
                   Continuar Comprando
-                </Button>                <Button 
+                </Button>                
+                <Button 
                   variant="outline-danger"
                   onClick={async () => {
                     try {
-                      await clearCart();
+                      if (estaMontado.current) {
+                        await limparCarrinho();
+                      }
                     } catch (error) {
-                      console.error('Erro ao limpar carrinho:', error);
+                      if (estaMontado.current) {
+                        console.error('Erro ao limpar carrinho:', error);
+                      }
                     }
                   }}
                 >
@@ -154,16 +176,16 @@ const CartPage = () => {
               <Card.Body>
                 <div className="d-flex justify-content-between mb-2">
                   <span>Subtotal:</span>
-                  <span className="fw-bold">{formatCurrency(subtotal)}</span>
+                  <span className="fw-bold">{formatarMoeda(subtotal)}</span>
                 </div>
                 <div className="d-flex justify-content-between mb-2">
                   <span>Frete:</span>
-                  <span className="fw-bold">{formatCurrency(shipping)}</span>
+                  <span className="fw-bold">{formatarMoeda(frete)}</span>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between mb-3">
                   <span className="fw-bold">Total:</span>
-                  <span className="fw-bold fs-5 text-primary">{formatCurrency(total)}</span>
+                  <span className="fw-bold fs-5 text-primary">{formatarMoeda(total)}</span>
                 </div>
                 <Button variant="success" className="w-100">
                   <i className="bi bi-credit-card me-2"></i>
@@ -207,4 +229,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default PaginaCarrinho;
