@@ -1,0 +1,67 @@
+.ordenacao-produtos .dropdown-toggle {
+  background-color: #fff;
+  border-color: #dee2e6;
+  color: #474747;
+  padding: 0.5rem 1rem;
+  box-shadow: none;
+}
+
+.ordenacao-produtos .dropdown-toggle:hover,
+.ordenacao-produtos .dropdown-toggle:focus {
+  background-color: #f8f9fa;
+  border-color: #c92071;
+  color: #474747;
+}
+
+.ordenacao-produtos .dropdown-toggle::after {
+  color: #c92071;
+  margin-left: 0.5rem;
+}
+
+.ordenacao-produtos .dropdown-menu {
+  padding: 0.5rem;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ordenacao-produtos .dropdown-item {
+  color: #474747;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.ordenacao-produtos .dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #c92071;
+}
+
+.ordenacao-produtos .dropdown-item.active {
+  background-color: #f8f9fa;
+  color: #c92071;
+  font-weight: 500;
+}
+
+.ordenacao-produtos .dropdown-item.active i {
+  color: #c92071;
+}
+
+/* Estilo para ordenação em dispositivos móveis */
+.ordenacao-mobile .dropdown-toggle {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.ordenacao-mobile .dropdown-toggle span {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+@media (max-width: 576px) {
+  .botao-comparacao-produtos .btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}

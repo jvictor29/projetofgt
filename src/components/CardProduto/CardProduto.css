@@ -1,0 +1,456 @@
+/* Estilos para o componente de Cartão de Produto
+ * Este arquivo contém todos os estilos CSS para o cartão de produto que é exibido 
+ * na visualização em grade da loja.
+ */
+
+.card_produto {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+}
+
+/* Estilo para quando o cartão está selecionado para comparação */
+.card_produto--selected {
+  border: 2px solid #C92071;
+  box-shadow: 0 8px 20px rgba(201, 32, 113, 0.15);
+  position: relative;
+}
+
+/* Adiciona um marcador de seleção quando o produto está selecionado */
+.card_produto--selected::after {
+  content: '✓';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #C92071;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  top: -10px;
+  right: -10px;
+  box-shadow: 0 3px 8px rgba(201, 32, 113, 0.3);
+  animation: pulseEffect 1.5s infinite;
+  z-index: 2;
+}
+
+/* Animação de pulsação para o marcador de seleção */
+@keyframes pulseEffect {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 3px 8px rgba(201, 32, 113, 0.3);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 5px 12px rgba(201, 32, 113, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 3px 8px rgba(201, 32, 113, 0.3);
+  }
+}
+
+/* Efeito hover para o cartão */
+.card_produto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Área de desconto/etiqueta promocional */
+.card_produto__desconto_area {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+}
+
+.card_produto__desconto {
+  background: linear-gradient(135deg, #E7FF86 0%, #CEFF00 100%);
+  color: #333333;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 29px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  transform: rotate(-5deg) scale(1.05);
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.card_produto:hover .card_produto__desconto {
+  transform: rotate(-5deg) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Área da imagem do produto */
+.card_produto__area_imagem {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; /* Altura do contêiner da imagem */
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho radial na área da imagem */
+.card_produto__area_imagem::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0) 60%, rgba(255,255,255,0.5) 100%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Efeito de brilho diagonal na área da imagem */
+.card_produto__area_imagem::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.8s ease;
+}
+
+.card_produto:hover .card_produto__area_imagem::before {
+  opacity: 1;
+  transform: rotate(30deg) translate(0, 0);
+  animation: shineEffect 2s infinite;
+}
+
+@keyframes shineEffect {
+  0% {
+    transform: rotate(30deg) translate(-100%, -100%);
+  }
+  100% {
+    transform: rotate(30deg) translate(100%, 100%);
+  }
+}
+
+/* Overlay da imagem com botão "Ver detalhes" */
+.card_produto__imagem_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.03);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.card_produto__visualizacao_rapida {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #C92071;
+}
+
+.card_produto:hover .card_produto__visualizacao_rapida {
+  transform: translateY(0);
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card_produto:hover .card_produto__imagem_overlay {
+  opacity: 1;
+}
+
+/* Imagem do produto */
+.card_produto__imagem {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+  transform: rotate(-20deg);
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.05));
+}
+
+.card_produto:hover .card_produto__imagem {
+  transform: rotate(-20deg) scale(1.15);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+/* Corpo do cartão (informações do produto) */
+.card_produto__corpo {
+  padding: 20px;
+}
+
+/* Estilo para a marca do produto */
+.card_produto__marca {
+  color: #8F8F8F;
+  font-size: 13px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* Estilo para o título/nome do produto */
+.card_produto__titulo {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 10px;
+  min-height: 40px;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card_produto__titulo a {
+  color: #333333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  background-image: linear-gradient(transparent 97%, #C92071 3%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 0.3s ease;
+}
+
+.card_produto__titulo a:hover {
+  color: #C92071;
+  background-size: 100% 100%;
+}
+
+/* Área de avaliação e estrelas */
+.card_produto__avaliacao_area {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.card_produto__avaliacao_estrelas {
+  color: #F6AA1C;
+  font-size: 14px;
+  margin-right: 8px;
+  letter-spacing: 1px;
+}
+
+.card_produto__avaliacao_total {
+  color: #8F8F8F;
+  font-size: 12px;
+}
+
+/* Indicador de estoque */
+.card_produto__estoque {
+  margin-bottom: 15px;
+}
+
+.card_produto__estoque_texto {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.card_produto__estoque_quantidade {
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  padding: 4px 8px;
+  background-color: #f8f9fa;
+}
+
+/* Área de preço */
+.card_produto__preco_area {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card_produto__preco_antigo {
+  color: #8F8F8F;
+  font-size: 14px;
+  margin-right: 0;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #f87373;
+}
+
+.card_produto__economia {
+  font-size: 12px;
+  color: #4CAF50;
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  margin-top: -2px;
+  margin-bottom: 3px;
+}
+
+.card_produto__preco_atual {
+  color: #1F1F1F;
+  font-size: 22px;
+  font-weight: 700;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card_produto:hover .card_produto__preco_atual {
+  color: #C92071;
+  transform: scale(1.03);
+}
+
+/* Botão de adicionar ao carrinho */
+.card_produto__botao_carrinho {
+  background-color: #C92071;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(201, 32, 113, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho no botão de adicionar ao carrinho */
+.card_produto__botao_carrinho::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s ease;
+}
+
+.card_produto__botao_carrinho:hover::before {
+  left: 100%;
+}
+
+.card_produto__botao_carrinho:hover {
+  background-color: #a01a5f;
+  box-shadow: 0 6px 15px rgba(201, 32, 113, 0.3);
+  transform: translateY(-2px);
+}
+
+.card_produto__botao_carrinho:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(201, 32, 113, 0.3);
+}
+
+.card_produto__icone_carrinho {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* Botão de comparar produtos */
+.card_produto__botao_comparar {
+  background-color: #f8f9fa;
+  border: 1px solid #e2e2e2;
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  color: #6c757d;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card_produto__botao_comparar:hover {
+  background-color: #e9ecef;
+  color: #C92071;
+  border-color: #C92071;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card_produto__botao_comparar.card_produto__botao_comparar--selecionado {
+  background-color: #C92071;
+  border-color: #C92071;
+  color: white;
+  box-shadow: 0 4px 10px rgba(201, 32, 113, 0.2);
+}
+
+.card_produto__botao_comparar.card_produto__botao_comparar--selecionado:hover {
+  background-color: #a01a5f;
+  border-color: #a01a5f;
+  box-shadow: 0 4px 12px rgba(201, 32, 113, 0.3);
+}
+
+/* Animação de entrada para os cartões */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Atraso na animação de entrada para criar efeito escalonado */
+.col:nth-child(1) .card_produto { animation-delay: 0.05s; }
+.col:nth-child(2) .card_produto { animation-delay: 0.1s; }
+.col:nth-child(3) .card_produto { animation-delay: 0.15s; }
+.col:nth-child(4) .card_produto { animation-delay: 0.2s; }
+.col:nth-child(5) .card_produto { animation-delay: 0.25s; }
+.col:nth-child(6) .card_produto { animation-delay: 0.3s; }
+.col:nth-child(7) .card_produto { animation-delay: 0.35s; }
+.col:nth-child(8) .card_produto { animation-delay: 0.4s; }
+.col:nth-child(9) .card_produto { animation-delay: 0.45s; }
+
+.card_produto {
+  animation: cardFadeIn 0.6s ease forwards;
+  opacity: 0;
+}

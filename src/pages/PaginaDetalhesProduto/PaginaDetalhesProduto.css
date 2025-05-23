@@ -1,0 +1,272 @@
+.pagina-detalhes-produto {
+  color: #474747;
+}
+
+/* Galeria de imagens */
+.galeria-produto {
+  position: relative;
+}
+
+.imagem-produto-principal {
+  border-radius: 8px;
+  object-fit: contain;
+  background-color: #f8f9fa;
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+}
+
+.miniaturas-produto {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.item-miniatura-produto {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.item-miniatura-produto.ativo {
+  border-color: #C92071;
+}
+
+.item-miniatura-produto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.selo-desconto-produto {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+/* Informações do produto */
+.marca-produto {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.titulo-produto {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.avaliacao-produto {
+  display: flex;
+  align-items: center;
+}
+
+.estrelas-produto {
+  color: #F6AA1C;
+  margin-right: 10px;
+}
+
+.estrelas-produto i {
+  margin-right: 2px;
+}
+
+.contagem-avaliacao-produto {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.preco-produto {
+  display: flex;
+  flex-direction: column;
+}
+
+.preco-antigo-produto {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 1rem;
+}
+
+.preco-atual-produto {
+  color: #C92071;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.parcelas-produto {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.descricao-produto {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Seletor de quantidade */
+.controles-quantidade {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.controles-quantidade button {
+  border: none;
+  background-color: #f5f5f5;
+  color: #333;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.exibicao-quantidade {
+  width: 40px;
+  text-align: center;
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+/* Botões de ação */
+.btn-adicionar-carrinho {
+  background-color: #C92071;
+  border-color: #C92071;
+}
+
+.btn-adicionar-carrinho:hover {
+  background-color: #a01a5f;
+  border-color: #a01a5f;
+}
+
+.btn-comprar-agora {
+  border-color: #ddd;
+  color: #333;
+}
+
+.btn-comprar-agora:hover {
+  background-color: #f5f5f5;
+}
+
+/* Tabs de informações */
+.tabs-detalhes-produto .nav-tabs {
+  border-bottom: 1px solid #ddd;
+}
+
+.tabs-detalhes-produto .nav-link {
+  color: #666;
+  font-weight: 500;
+  border: none;
+  position: relative;
+  padding: 12px 20px;
+}
+
+.tabs-detalhes-produto .nav-link.active {
+  color: #C92071;
+  background-color: transparent;
+  border-bottom: 3px solid #C92071;
+}
+
+/* Especificações */
+.tabela-especificacoes {
+  display: flex;
+  flex-direction: column;
+}
+
+.linha-especificacoes {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.linha-especificacoes:last-child {
+  border-bottom: none;
+}
+
+.rotulo-especificacoes {
+  min-width: 180px;
+  font-weight: 500;
+  color: #666;
+}
+
+.valor-especificacoes {
+  flex-grow: 1;
+  text-transform: capitalize;
+}
+
+/* Avaliações */
+.avaliacao-geral {
+  text-align: center;
+  padding-right: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.numero-avaliacao {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1;
+}
+
+.barra-avaliacao {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.barra-avaliacao span {
+  min-width: 80px;
+  font-size: 0.9rem;
+}
+
+.barra-avaliacao .progress {
+  flex-grow: 1;
+  margin: 0 10px;
+  height: 8px;
+}
+
+.btn-escrever-avaliacao {
+  margin-top: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .titulo-produto {
+    font-size: 1.5rem;
+  }
+  
+  .preco-atual-produto {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .avaliacao-geral {
+    padding-right: 15px;
+  }
+  
+  .barra-avaliacao span {
+    min-width: 60px;
+    font-size: 0.8rem;
+  }
+  
+  .item-miniatura-produto {
+    width: 60px;
+    height: 60px;
+  }
+}

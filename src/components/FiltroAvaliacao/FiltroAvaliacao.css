@@ -1,0 +1,24 @@
+.filtro-avaliacao .valor-avaliacao {
+  min-height: 24px;
+  display: inline-block;
+}
+
+.filtro-avaliacao .controle-avaliacao {
+  cursor: pointer;
+}
+
+.filtro-avaliacao .controle-avaliacao::-webkit-slider-thumb {
+  background-color: #C92071;
+}
+
+.filtro-avaliacao .controle-avaliacao::-moz-range-thumb {
+  background-color: #C92071;
+}
+
+.filtro-avaliacao .bi-star-fill,
+.filtro-avaliacao .bi-star-half,
+.filtro-avaliacao .bi-star {
+  color: #F6AA1C;
+  font-size: 0.85rem;
+  margin-right: 1px;
+}

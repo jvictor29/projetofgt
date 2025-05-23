@@ -1,0 +1,221 @@
+.cabecalho_resultados {
+  color: #474747;
+}
+
+/* Estilização da paginação */
+.pagination .page-item .page-link {
+  color: #474747;
+  border-color: #dee2e6;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #C92071;
+  border-color: #C92071;
+  color: white;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #f2f2f2;
+  color: #C92071;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+/* Estilização para visualização em lista */
+.container-visualizacao-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Animação de transição entre modos de visualização */
+.row, .container-visualizacao-lista {
+  transition: all 0.3s ease;
+}
+
+/* Estilização de filtros */
+.secao-filtro {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.secao-filtro .form-label {
+  font-weight: 600;
+  color: #474747;
+  margin-bottom: 10px;
+}
+
+.secao-filtro .form-check-label {
+  color: #474747;
+}
+
+.secao-filtro .form-range::-webkit-slider-thumb {
+  background-color: #C92071;
+}
+
+.secao-filtro .form-range::-moz-range-thumb {
+  background-color: #C92071;
+}
+
+/* Estilos para o botão de comparação e tabela de comparação de produtos */
+.item-lista-produto__botao-carrinho:hover {
+  background-color: #a01a5f;
+  border-color: #a01a5f;
+}
+
+.item-lista-produto__botao-comparar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  transition: all 0.3s ease;
+}
+
+/* Estilo para a tabela de comparação de produtos */
+.tabela-comparacao {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.tabela-comparacao th {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  padding: 12px;
+}
+
+.tabela-comparacao td {
+  vertical-align: middle;
+  padding: 12px;
+}
+
+/* Estilo para o botão flutuante de comparação */
+.botao-comparacao-produtos .btn {
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-weight: 600;
+  z-index: 1000;
+  animation: pulse-button 2s infinite;
+}
+
+@keyframes pulse-button {
+  0% {
+    box-shadow: 0 0 0 0 rgba(201, 32, 113, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(201, 32, 113, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(201, 32, 113, 0);
+  }
+}
+
+/* Estilo para o componente de comparação de produtos */
+.botao-comparacao-produtos {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  border-radius: 30px;
+  animation: pulseAnimation 2s infinite;
+}
+
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Estilo para o container de produtos vazio */
+.container-produto-vazio {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.container-produto-vazio i {
+  font-size: 3rem;
+  color: #dee2e6;
+  margin-bottom: 15px;
+}
+
+.container-produto-vazio h3 {
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.container-produto-vazio p {
+  color: #adb5bd;
+}
+
+/* Estilo para mensagem de nenhum produto encontrado */
+.sem-produtos-encontrados {
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.sem-produtos-encontrados .icone-sem-resultados {
+  font-size: 3rem;
+  color: #dee2e6;
+  display: block;
+}
+
+/* Efeito de transição suave ao alternar entre visualizações */
+.transicao-fade-entrada {
+  opacity: 0;
+}
+
+.transicao-fade-entrada-ativa {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.transicao-fade-saida {
+  opacity: 1;
+}
+
+.transicao-fade-saida-ativa {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .row-cols-sm-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .row-cols-1 > * {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  
+  .pagination {
+    font-size: 0.9rem;
+  }
+}
