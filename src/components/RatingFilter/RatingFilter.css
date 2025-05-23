@@ -1,0 +1,24 @@
+.rating-filter .rating-value {
+  min-height: 24px;
+  display: inline-block;
+}
+
+.rating-filter .rating-slider {
+  cursor: pointer;
+}
+
+.rating-filter .rating-slider::-webkit-slider-thumb {
+  background-color: #C92071;
+}
+
+.rating-filter .rating-slider::-moz-range-thumb {
+  background-color: #C92071;
+}
+
+.rating-filter .bi-star-fill,
+.rating-filter .bi-star-half,
+.rating-filter .bi-star {
+  color: #F6AA1C;
+  font-size: 0.85rem;
+  margin-right: 1px;
+}

@@ -1,0 +1,123 @@
+.footer {
+  background-color: #1F1F1F;
+  color: #FFFFFF;
+}
+
+.footer-main {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand img {
+  height: 40px;
+}
+
+.footer-text {
+  color: #8F8F8F;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #474747;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.footer-social-link:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.footer-heading {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #FFFFFF;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  color: #8F8F8F;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer-form .form-control {
+  background-color: #474747;
+  border: none;
+  color: white;
+  padding: 0.75rem 1rem;
+}
+
+.footer-form .form-control::placeholder {
+  color: #8F8F8F;
+}
+
+.footer-form .btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  padding: 0.75rem 1.5rem;
+}
+
+.footer-form .btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.footer-bottom {
+  background-color: #1A1A1A;
+  font-size: 14px;
+  color: #8F8F8F;
+}
+
+.payment-methods {
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .footer-brand img {
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .footer-text {
+    text-align: center;
+  }
+  
+  .footer-social {
+    justify-content: center;
+  }
+  
+  .footer-heading {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  .footer-links {
+    text-align: center;
+  }
+}
