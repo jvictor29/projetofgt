@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finalizar compra</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<!-- Copiei o Header e Footer da página de produtos -->
+<body>
+  <header class="header">
+    <a href="home.html" class="header-logo" aria-label="Ir para a página inicial">
+      <img src="img/logo -HEADER.svg" alt="Digital Store">
+    </a>
+    <div class="header-search">
+      <input type="text" id="searchInput" placeholder="Tênis" aria-label="Pesquisar produto">
+      <i class=" bi bi-search header-search-icon"></i>
+    </div>
+    <div class="header-actions">
+      <a href="#" class="header-register">Cadastre-se</a>
+      <button class="header-login">Entrar</button>
+      <a href="#" class="header-cart" aria-label="Carrinho de compras com 2 itens">
+        <i class="bi bi-cart-fill"></i>
+        <span class="header-cart-badge">2</span>
+      </a>
+    </div>
+  </header>
+  <nav class="nav-main">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="home.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="produtos.html" class="nav-link active" aria-current="page">Produtos</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Categorias</a>
+      </li>
+      <li class="nav-item">
+        <a href="descricao.html" class="nav-link">Meus Pedidos</a>
+      </li>
+    </ul>
+  </nav>
+  <!--Conteúdo principal-->
+  <main>
+    <h1>Finalizar Compra</h1>
+    <form action="">
+      <h2>Informações Pessoais</h2>
+      <label for="nome">Nome completo</label><br>
+      <input type="text" id="nome" name="nome" required="required" placeholder="Insira seu nome"><br>
+
+      <label for="cpf">CPF</label><br>
+      <input type="text" id="cpf" name="cpf" required="required" placeholder="Insira se CPF"><br>
+
+      <label for="email">E-mail</label><br>
+      <input type="email" id="email" name="email" required="required" placeholder="Insira seu E-mail"><br>
+
+      <label for="celular">Celular</label><br>
+      <input type="text" id="celular" name="celular" required="required" placeholder="Insira seu celular"><br>
+
+      <h2>Informações de Entrega</h2>
+
+      <label for="endereco">Endereço</label><br>
+      <input type="text" id="endereco" name="endereco" required="required" placeholder="Insira seu endereco"><br>
+
+      <label for="bairro">Bairro</label><br>
+      <input type="text" id="bairro" name="bairro" required="required" placeholder="Insira seu bairro"><br>
+
+      <label for="cidade">Cidade</label><br>
+      <input type="text" id="cidade" name="cidade" required="required" placeholder="Insira sua cidade"><br>
+
+      <label for="cep">CEP</label><br>
+      <input type="text" id="cep" name="cep" required="required" placeholder="Insira seu CEP"><br>
+
+      <label for="complemento">Complemento</label><br>
+      <input type="text" id="complemento" name="complemento" required="required" placeholder="Insira complemento"><br>
+
+      <h2>Informações de Pagamento</h2>
+
+      <label for="pagamento">Forma de pagamento</label><br>
+      <input type="radio" name="pagamento" id="creditocard" value="creditocard"><label for="creditocard">Cartão de
+        Crédito</label>
+      <input type="radio" name="pagamento" id="boleto" value="boleto"><label for="boleto">Boleto Bancário</label><br>
+
+      <label for="cardname">Nome do Cartão</label><br>
+      <input type="text" id="cardname" name="cardname" required="required" placeholder="Insira o nome do Cartão"><br>
+
+      <label for="cardnumber">Número do Cartão</label><br>
+      <input type="text" id="cardnumber" name="cardnumber" required="required"
+        placeholder="Insira o número do Cartão"><br>
+
+      <label for="cardvalidade">Data de validade</label><br>
+      <input type="text" id="cardvalidade" name="cardvalidade" required="required"
+        placeholder="Insira a data de validade do Cartão"><br>
+
+      <label for="cvv">CVV</label><br>
+      <input type="text" id="cvv" name="cvv" required="required" placeholder="CVV">
+
+      <!--Aqui seria as contas, não sei como vou fazer isso.
+     Os detalhes de "Resumo" ficam ao lado das informações de "Finalizar compra",
+      Acredito que com bootstrap dê para resolver isso... Não tenho certeza -->
+      <h3>RESUMO</h3>
+      <img src="" alt=""><h4>Tênis Nike Revolution 6 Next Nature Masculino</h4>
+      <p>subtotal: R$ 219,00<br>
+        Frete: R$ 0,00<br>
+        Desconto: R$ 30,00<br>
+        Total R$ 219,00<br>
+        <!--Detalhe das parcelas--> ou 10x de R$ 21,00 sem juros<br>
+      </p>
+      <button>Realizar pagamento</button>
+
+      <h3>Finalizar Compra</h3><br>
+      <!-- Fazer algum log ou calculo -->
+      <p>TOTAL</p>
+
+      <button>Realizar pagamento</button>
+
+    </form>
+
+  </main>
+
+  <footer class="bg-dark text-light pt-5 pb-3">
+    <div class="container">
+      <div class="row gy-4">
+
+        <div class="col-md-3 col-sm-6">
+          <a href="home.html" class="d-block mb-3" aria-label="Digital Store - Página inicial">
+            <img src="img/logo.svg" alt="Logo Digital Store" class="img-fluid" width="150">
+          </a>
+          <p class="small text-light opacity-75">
+            Somos uma loja especializada em calçados esportivos de alta performance.
+            Oferecemos as melhores marcas com preços competitivos e atendimento personalizado.
+          </p>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <h2 class="h6 text-white mb-3">Informações</h2>
+          <ul class="list-unstyled small">
+            <li class="mb-2">
+              <a href="https://digitalcollege.com.br/quem-somos/"
+                class="text-decoration-none text-light opacity-75 hover-opacity-100">
+                Sobre
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="https://api.whatsapp.com/send?1=pt_BR&phone=558599721749"
+                class="text-decoration-none text-light opacity-75 hover-opacity-100">
+                Contato
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="https://digitalcollege.com.br/trabalhe-conosco/"
+                class="text-decoration-none text-light opacity-75 hover-opacity-100">
+                Trabalhe Conosco
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="https://digitalcollege.com.br/blog/"
+                class="text-decoration-none text-light opacity-75 hover-opacity-100">
+                Blog
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="descricao.html" class="text-decoration-none text-light opacity-75 hover-opacity-100">
+                Meus Pedidos
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <h2 class="h6 text-white mb-3">Categorias</h2>
+          <ul class="list-unstyled small">
+            <li class="mb-2">
+              <a href="#" class="text-decoration-none text-light opacity-75 hover-opacity-100">Tênis</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="text-decoration-none text-light opacity-75 hover-opacity-100">Acessórios</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <h2 class="h6 text-white mb-3">Contato</h2>
+          <address class="small text-light opacity-75 mb-3 fw-normal">
+            Av Santos Dumont, 1510 - 1 andar<br>
+            Aldeota, Fortaleza - CE, 60150-161
+          </address>
+          <p class="small text-light opacity-75 mb-3">(85) 3051-3411</p>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center gap-4 mt-3 mb-4">
+        <a href="https://www.facebook.com/" aria-label="Facebook" class="text-decoration-none">
+          <img src="img/Path face.svg" alt="Facebook" width="24" height="24">
+        </a>
+        <a href="https://www.instagram.com/" aria-label="Instagram" class="text-decoration-none">
+          <img src="img/Instagran.svg" alt="Instagram" width="24" height="24">
+        </a>
+        <a href="https://x.com/" aria-label="Twitter/X" class="text-decoration-none">
+          <img src="img/Path twitter.svg" alt="Twitter/X" width="24" height="24">
+        </a>
+      </div>
+
+      <hr class="border-secondary opacity-25">
+      <p class="text-center small text-light opacity-75 mt-4">
+        © 2025 Digital Store - Todos os direitos reservados.
+      </p>
+    </div>
+     </div>
+    <a href="#" id="back-to-top" class="back-to-top" aria-label="Voltar ao topo da página">
+        <img src="img/scroll-up.svg" alt="" aria-hidden="true">
+    </a>
+  </footer>
+</body>
+
+</html>
