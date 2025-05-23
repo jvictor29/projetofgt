@@ -29,7 +29,7 @@ Este projeto é uma aplicação de e-commerce desenvolvida com React
 
 ### Classes CSS
 
-As classes CSS seguem o padrão BEM (Block Element Modifier) com nomenclatura em inglês:
+As classes CSS seguem o padrão BEM (Block Element Modifier)
 - `item-lista-produto` (bloco)
 - `item-lista-produto__image` (elemento)
 - `item-lista-produto__add-to-cart` (elemento)
