@@ -10,7 +10,7 @@ const Footer = () => {
         <Row className="footer-main py-5">
           <Col lg={4} md={6} className="mb-4 mb-lg-0">
             <div className="footer-brand mb-4">
-              <img src="/img/logo-footer.svg" alt="Digital Store" />
+              <img src="/logo-footer.svg" alt="Digital Store" />
             </div>
             <p className="footer-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -77,7 +77,7 @@ const Footer = () => {
               <p className="mb-0">© 2025 Digital Store. Todos os direitos reservados.</p>
             </Col>
             <Col md={6} className="text-center text-md-end mt-3 mt-md-0">
-              <img src="/img/payment-methods.svg" alt="Métodos de pagamento" className="payment-methods" />
+              <img src="/payment-methods.svg" alt="Métodos de pagamento" className="payment-methods" />
             </Col>
           </Row>
         </Container>

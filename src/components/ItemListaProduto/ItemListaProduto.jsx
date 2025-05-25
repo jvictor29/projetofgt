@@ -100,11 +100,7 @@ const ItemListaProduto = ({ produto, estaSelecionado = false, aoAlternarComparac
                   {desconto}% OFF</span>
               </div>
             )}
-              <Link to={`/produtos/${id}`}>                <img
-                src={imagem}
-                alt={nome}
-                className="item-lista-produto__imagem img-fluid rounded"
-              />
+              <Link to={`/produtos/${id}`}><img src={imagem}alt={nome}className="item-lista-produto__imagem img-fluid rounded"/>
                 <div className="item-lista-produto__imagem-overlay">
                   <span className="item-lista-produto__visualizacao-detalhes">
                     <i className="bi bi-eye me-1"></i> Ver detalhes
@@ -114,7 +110,8 @@ const ItemListaProduto = ({ produto, estaSelecionado = false, aoAlternarComparac
             </div>
           </div>
 
-          {/* Informações do produto */}          <div className="col-md-6 col-8">
+          {/* Informações do produto */}
+          <div className="col-md-6 col-8">
             <p className="item-lista-produto__marca text-muted mb-1">{marca}</p>
             <h3 className="item-lista-produto__titulo fs-5 mb-2">
               <Link to={`/produtos/${id}`} className="text-decoration-none text-dark">
@@ -134,7 +131,8 @@ const ItemListaProduto = ({ produto, estaSelecionado = false, aoAlternarComparac
             </p>
           </div>
 
-          {/* Preço e botão de compra */}          <div className="col-md-3 mt-3 mt-md-0">
+          {/* Preço e botão de compra */}
+          <div className="col-md-3 mt-3 mt-md-0">
             <div className="item-lista-produto__area-preco text-end text-md-center mb-3">
               {precoAntigo && (
                 <>
@@ -167,7 +165,8 @@ const ItemListaProduto = ({ produto, estaSelecionado = false, aoAlternarComparac
               )}
             </div>
           </div>
-        </div>      </article>
+        </div>
+      </article>
       <ToastContainer position="bottom-right" className="p-3">
         <Toast
           onClose={() => setMostrarToast(false)}

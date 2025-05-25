@@ -24,7 +24,7 @@ const Header = () => {
       <header className="header">
         {/* Logo do site */}
         <Link to="/" className="header-logo" aria-label="Ir para a página inicial">
-          <img src="/img/logo -HEADER.svg" alt="Digital Store" />
+          <img src="/logo -HEADER.svg" alt="Digital Store" />
         </Link>        {/* Campo de busca com ícone */}
         <form className="header-search" onSubmit={handleSearch}>
           <input 

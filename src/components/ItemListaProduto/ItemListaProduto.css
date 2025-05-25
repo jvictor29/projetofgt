@@ -144,23 +144,21 @@
 }
 
 .item-lista-produto__desconto {
-  z-index: 1;
-  font-size: 0.8rem;
-  font-weight: bold;
-  background: linear-gradient(135deg, #E7FF86 0%, #CEFF00 100%) !important;
-  color: #333333 !important;
-  padding: 6px 14px !important;  
-  border-radius: 29px !important;
+   background: linear-gradient(135deg, #E7FF86 0%, #CEFF00 100%);
+  color: #333333;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 29px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-  transform: scale(1.0);
+  transform: rotate(-5deg) scale(1.05);
   transition: all 0.3s ease;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.7);
-  display: inline-block;
 }
 
 .item-lista-produto:hover .item-lista-produto__desconto {
-  transform: scale(1.05);
+ transform: rotate(-5deg) scale(1.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
