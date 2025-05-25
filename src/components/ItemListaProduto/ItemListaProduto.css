@@ -1,10 +1,11 @@
 .item-lista-produto {
-  background-color: #fff;
-  border: 1px solid #e9e9e9;
+  background-color: white;
   border-radius: 12px;
-  padding: 18px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .item-lista-produto--selected {
@@ -144,7 +145,7 @@
 }
 
 .item-lista-produto__desconto {
-   background: linear-gradient(135deg, #E7FF86 0%, #CEFF00 100%);
+  background: linear-gradient(135deg, #E7FF86 0%, #CEFF00 100%);
   color: #333333;
   font-size: 14px;
   font-weight: 700;
@@ -158,25 +159,32 @@
 }
 
 .item-lista-produto:hover .item-lista-produto__desconto {
- transform: rotate(-5deg) scale(1.1);
+  transform: rotate(-5deg) scale(1.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .item-lista-produto__marca {
-  font-size: 0.8rem;
+  color: #8F8F8F;
+  font-size: 13px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   font-weight: 500;
-  color: #666;
 }
 
 .item-lista-produto__titulo {
+  font-size: 16px;
   font-weight: 600;
-  line-height: 1.2;
-  overflow: hidden;
+  color: #333333;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  transition: color 0.3s ease;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
-  transition: color 0.3s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .item-lista-produto__titulo a {
@@ -201,20 +209,43 @@
 }
 
 .item-lista-produto__area-preco {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .item-lista-produto__preco-antigo {
-  color: #999;
+  color: #8F8F8F;
+  font-size: 14px;
+  margin-right: 0;
   text-decoration: line-through;
-  font-size: 0.9rem;
-  margin-right: 8px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #f87373;
+}
+
+.item-lista-produto__economia {
+  font-size: 12px;
+  color: #4CAF50;
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  margin-top: -2px;
+  margin-bottom: 3px;
 }
 
 .item-lista-produto__preco-atual {
-  color: #C92071;
+  color: #1F1F1F;
+  font-size: 22px;
   font-weight: 700;
-  font-size: 1.1rem;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.item-lista-produto:hover .item-lista-produto__preco-atual {
+  color: #C92071;
+  transform: scale(1.03);
 }
 
 .item-lista-produto__acoes {
@@ -224,28 +255,50 @@
 }
 
 .item-lista-produto__botao-carrinho {
-  background-color: #C92071 !important;
-  border-color: #C92071 !important;
-  box-shadow: 0 4px 10px rgba(201, 32, 113, 0.3);
-  transition: all 0.3s ease !important;
-  border-radius: 30px !important;
-  padding: 8px 16px !important;
-  flex-grow: 1;
-  text-transform: uppercase !important;
-  font-size: 0.85rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.03em;
+  background-color: #C92071;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(201, 32, 113, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho no botão de adicionar ao carrinho */
+.item-lista-produto__botao-carrinho::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s ease;
+}
+
+.item-lista_produto__botao-carrinho:hover::before {
+  left: 100%;
 }
 
 .item-lista-produto__botao-carrinho:hover {
-  background-color: #b01c63 !important;
-  box-shadow: 0 6px 15px rgba(201, 32, 113, 0.4) !important;
+  background-color: #a01a5f;
+  box-shadow: 0 6px 15px rgba(201, 32, 113, 0.3);
   transform: translateY(-2px);
 }
 
 .item-lista-produto__botao-carrinho:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(201, 32, 113, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(201, 32, 113, 0.3);
 }
 
 .item-lista-produto__botao-comparar {
@@ -288,7 +341,7 @@
   height: 180px;
 }
 
-.list-view-container .item-lista-produto__conteudo {
+.list-view-container .item-lista_produto__conteudo {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
