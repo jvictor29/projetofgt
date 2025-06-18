@@ -1,0 +1,505 @@
+
+
+body {
+  background-color: #f9f9fb;
+}
+
+/* Topo com espaco*/
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #fff;
+}
+
+/* Barra de busca */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  width: 300px;
+}
+
+.search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+}
+
+.search-box button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Área de autenticação e carrinho */
+.auth-cart {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cadastro {
+  color: #333;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.entrar {
+  background-color: #b10074;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.carrinho {
+  position: relative;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+/* Menu de navegação com a animacao tirada do gpt*/
+
+.menu {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.menu-item {
+  position: relative;
+  font-size: 16px;
+  color: #333;
+  cursor: default;
+  transition: color 0.3s ease;
+}
+
+.menu-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #b0006d; 
+  transition: width 0.3s ease;
+}
+
+.menu-item:hover {
+  color: #b0006d;
+}
+
+.menu-item:hover::after {
+  width: 100%;
+}
+
+/* Container principal */
+.produto-container {
+  padding: 40px;
+  font-family: sans-serif;
+  background-color: #f9f9fb;
+}
+
+/* Breadcrumb do chatgpt*/
+.breadcrumb {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.breadcrumb a {
+  color: #333;
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  font-weight: bold;
+}
+
+/* Estrutura de produto */
+.produto {
+  display: flex;
+  gap: 40px;
+}
+
+/* Galeria com a foto do tenis */
+.galeria {
+  position: relative;
+  background-color: #e6e8fc;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.imagem-principal {
+  width: 400px;
+}
+
+/* setas na foto com ajuda do chatgpt */
+.seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-weight: bold;
+}
+
+.seta.esquerda {
+  left: 10px;
+}
+
+.seta.direita {
+  right: 10px;
+}
+
+/* Miniaturas dos tenis com animacao nas bordas*/
+.miniaturas {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 50px;
+
+}
+
+.miniaturas img {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  cursor: pointer;
+ 
+}
+
+.miniaturas img.ativo {
+  border-color: #5083d7;
+}
+
+.thumb {
+  width: 70px;
+  height: 70px;
+  border: 2px solid transparent; 
+  border-radius: 8px;
+  padding: 4px;
+  transition: border 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb:hover {
+  border-color: #b00074; 
+}
+
+/* Detalhes */
+.detalhes {
+  flex: 1;
+}
+
+.detalhes h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.categoria {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.avaliacao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.estrelas {
+  color: gold;
+  font-size: 14px;
+}
+
+.nota {
+  background-color: #ffc107;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.quantidade {
+  font-size: 12px;
+  color: #777;
+}
+
+.preco-atual {
+  font-size: 22px;
+  font-weight: bold;
+  color: #222;
+  margin-right: 12px;
+}
+
+.preco-antigo {
+  text-decoration: line-through;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.descricao {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Tamanhos */
+.tamanhos p,
+.cores p {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.tamanhos button {
+  padding: 8px 12px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tamanhos button.ativo {
+  background-color: #c40075;
+  color: white;
+  border: none;
+}
+
+.tamanho {
+  padding: 10px 14px;
+  margin: 4px;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tamanho:hover {
+  background-color: #b1006e; 
+  color: white;
+  border-color: #b1006e;
+}
+
+
+
+/* Cores */
+.cores {
+  margin-bottom: 20px;
+}
+
+.cores .cor {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.cor.azul { background-color: #00d4ff; }
+.cor.rosa { background-color: #ff4ea3; }
+.cor.cinza { background-color: #6c6c6c; }
+.cor.roxo { background-color: #8074dc; }
+
+/* Botão comprar */
+.comprar {
+  background-color: #f9a825;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+/* Produtos Relacionados com animacao do gpt*/
+.produtos-relacionados {
+  padding: 40px;
+  background-color: #f9f7fd;
+  font-family: sans-serif;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.ver todos {
+  color: #d1008f;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.products-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #00ff59;
+  color: #000;
+  font-weight: bold;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.category {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.nome-do-produto {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 14px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #aaa;
+  margin-right: 8px;
+}
+
+.new-price {
+  color: #000;
+  font-weight: bold;
+}
+
+/* parte final:infotmacoes,categoria,contato */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer {
+  background-color: #1c1c1c;
+  color: #fff;
+  padding: 40px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  margin: 20px;
+}
+
+.footer-section h2,
+.footer-section h3 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section li {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons .icon {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 18px;
+  background: #333;
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  line-height: 28px;
+  border-radius: 50%;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  margin-top: 30px;
+  font-size: 14px;
+}
